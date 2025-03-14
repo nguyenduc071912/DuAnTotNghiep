@@ -26,31 +26,10 @@ public class GioiThieu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog2 = new javax.swing.JDialog();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        lblLogo = new javax.swing.JLabel();
         txtGioiThieu = new javax.swing.JTextPane();
+        lblLogo = new javax.swing.JLabel();
 
-        jDialog2.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog2.setAlwaysOnTop(true);
-        jDialog2.setUndecorated(true);
-        jDialog2.setPreferredSize(new java.awt.Dimension(560, 400));
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        jPanel2.setLayout(new java.awt.BorderLayout());
-
-        jPanel3.setLayout(new java.awt.GridLayout());
-
-        lblLogo.setBackground(new java.awt.Color(255, 255, 255));
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logoBonbon.png"))); // NOI18N
-        lblLogo.setOpaque(true);
-        lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblLogoMouseClicked(evt);
-            }
-        });
-        jPanel3.add(lblLogo);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtGioiThieu.setEditable(false);
         txtGioiThieu.setText("BonBonCoffee là phần mềm quản lý đa năng, được thiết kế để phục vụ quản lý quán cà phê. \n\n Phần mềm này cung cấp đầy đủ các tính năng và nghiệp vụ chuyên sâu, giúp chủ quán cà phê tối ưu hóa quy trình vận hành và nâng cao hiệu quả kinh doanh.\n\nCác tính năng nổi bật của BonBonCoffee:\n1, Quản lý nhân viên: Tạo và phân quyền cho từng nhân viên (thu ngân, phục vụ, quản lý, v.v.) và đánh giá hiệu quả. \n2, Quản lý khách hàng: Lưu trữ thông tin khách hàng, lịch sử mua hàng và sở thích.\n3, Quản lý sản phẩm: Quản lý danh mục đồ uống, món ăn kèm và nguyên liệu.\n4, Quản lý kho: Kiểm soát tồn kho, tự động cảnh báo khi hàng sắp hết.\n5, Quản lý đơn hàng: Nhận và xử lý đơn hàng nhanh chóng, chính xác và theo dõi trạng thái đơn hàng từ lúc đặt đến khi hoàn tất.\n6, Quản lý hóa đơn và hóa đơn chi tiết: Xem chi tiết từng hóa đơn với thông tin sản phẩm, giá cả, phương thức thanh toán.");
@@ -60,23 +39,32 @@ public class GioiThieu extends javax.swing.JFrame {
                 txtGioiThieuMouseClicked(evt);
             }
         });
-        jPanel3.add(txtGioiThieu);
 
-        jPanel2.add(jPanel3, java.awt.BorderLayout.CENTER);
-
-        jDialog2.getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        lblLogo.setBackground(new java.awt.Color(255, 255, 255));
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logoBonbon.png"))); // NOI18N
+        lblLogo.setOpaque(true);
+        lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 759, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(lblLogo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtGioiThieu, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 229, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtGioiThieu, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,9 +116,6 @@ public class GioiThieu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog jDialog2;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JTextPane txtGioiThieu;
     // End of variables declaration//GEN-END:variables
