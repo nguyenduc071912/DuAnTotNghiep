@@ -26,67 +26,71 @@ public class GioiThieu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        jDialog2 = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        lblLogo = new javax.swing.JLabel();
+        txtGioiThieu = new javax.swing.JTextPane();
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jDialog2.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog2.setAlwaysOnTop(true);
+        jDialog2.setUndecorated(true);
+        jDialog2.setPreferredSize(new java.awt.Dimension(560, 400));
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 300, Short.MAX_VALUE))
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 200, Short.MAX_VALUE))
-        );
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jPanel3.setLayout(new java.awt.GridLayout());
+
+        lblLogo.setBackground(new java.awt.Color(255, 255, 255));
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logoBonbon.png"))); // NOI18N
+        lblLogo.setOpaque(true);
+        lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogoMouseClicked(evt);
+            }
+        });
+        jPanel3.add(lblLogo);
+
+        txtGioiThieu.setEditable(false);
+        txtGioiThieu.setText("BonBonCoffee là phần mềm quản lý đa năng, được thiết kế để phục vụ quản lý quán cà phê. \n\n Phần mềm này cung cấp đầy đủ các tính năng và nghiệp vụ chuyên sâu, giúp chủ quán cà phê tối ưu hóa quy trình vận hành và nâng cao hiệu quả kinh doanh.\n\nCác tính năng nổi bật của BonBonCoffee:\n1, Quản lý nhân viên: Tạo và phân quyền cho từng nhân viên (thu ngân, phục vụ, quản lý, v.v.) và đánh giá hiệu quả. \n2, Quản lý khách hàng: Lưu trữ thông tin khách hàng, lịch sử mua hàng và sở thích.\n3, Quản lý sản phẩm: Quản lý danh mục đồ uống, món ăn kèm và nguyên liệu.\n4, Quản lý kho: Kiểm soát tồn kho, tự động cảnh báo khi hàng sắp hết.\n5, Quản lý đơn hàng: Nhận và xử lý đơn hàng nhanh chóng, chính xác và theo dõi trạng thái đơn hàng từ lúc đặt đến khi hoàn tất.\n6, Quản lý hóa đơn và hóa đơn chi tiết: Xem chi tiết từng hóa đơn với thông tin sản phẩm, giá cả, phương thức thanh toán.");
+        txtGioiThieu.setPreferredSize(new java.awt.Dimension(512, 175));
+        txtGioiThieu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtGioiThieuMouseClicked(evt);
+            }
+        });
+        jPanel3.add(txtGioiThieu);
+
+        jPanel2.add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        jDialog2.getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logoBonbon.png"))); // NOI18N
-
-        jTextPane1.setText("BonBonCoffee là phần mềm quản lý đa năng, được thiết kế để phục vụ quản lý quán cà phê. \n\n Phần mềm này cung cấp đầy đủ các tính năng và nghiệp vụ chuyên sâu, giúp chủ quán cà phê tối ưu hóa quy trình vận hành và nâng cao hiệu quả kinh doanh.\n\nCác tính năng nổi bật của BonBonCoffee:\n1, Quản lý nhân viên: Tạo và phân quyền cho từng nhân viên (thu ngân, phục vụ, quản lý, v.v.) và đánh giá hiệu quả. \n2, Quản lý khách hàng: Lưu trữ thông tin khách hàng, lịch sử mua hàng và sở thích.\n3, Quản lý sản phẩm: Quản lý danh mục đồ uống, món ăn kèm và nguyên liệu.\n4, Quản lý kho: Kiểm soát tồn kho, tự động cảnh báo khi hàng sắp hết.\n5, Quản lý đơn hàng: Nhận và xử lý đơn hàng nhanh chóng, chính xác và theo dõi trạng thái đơn hàng từ lúc đặt đến khi hoàn tất.\n6, Quản lý hóa đơn và hóa đơn chi tiết: Xem chi tiết từng hóa đơn với thông tin sản phẩm, giá cả, phương thức thanh toán.\n ");
-        jScrollPane1.setViewportView(jTextPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 759, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 229, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_lblLogoMouseClicked
+
+    private void txtGioiThieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGioiThieuMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_txtGioiThieuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -124,10 +128,10 @@ public class GioiThieu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JDialog jDialog2;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JTextPane txtGioiThieu;
     // End of variables declaration//GEN-END:variables
 }
