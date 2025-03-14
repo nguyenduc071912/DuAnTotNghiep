@@ -39,7 +39,17 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,44 +73,77 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton3);
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Đơn hàng");
         jToolBar1.add(jButton4);
 
-        jButton5.setText("jButton5");
+        jButton5.setText("Hóa đơn");
         jButton5.setFocusable(false);
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton5);
 
-        jButton6.setText("jButton6");
+        jButton6.setText("Tổng hợp-Thống kê");
         jButton6.setFocusable(false);
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton6);
 
-        jButton7.setText("jButton7");
+        jButton7.setText("Giới thiệu");
         jButton7.setFocusable(false);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton7);
 
-        jButton8.setText("jButton8");
+        jButton8.setText("Trợ giúp");
         jButton8.setFocusable(false);
         jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton8);
 
-        jButton9.setText("jButton9");
+        jButton9.setText("Đổi mật khẩu");
         jButton9.setFocusable(false);
         jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton9);
 
-        jMenu1.setText("File");
+        jMenu1.setText("Hệ thống");
+
+        jMenuItem1.setText("Đăng nhập");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Đổi mật khẩu");
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Đăng xuất");
+        jMenu1.add(jMenuItem3);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Quản lý");
+
+        jMenuItem4.setText("Quản lý nhân viên");
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("Quản lý sản phẩm");
+        jMenu2.add(jMenuItem5);
+
+        jMenuItem6.setText("Quản lý khách hàng");
+        jMenu2.add(jMenuItem6);
+
+        jMenuItem7.setText("Quản lý đơn hàng");
+        jMenu2.add(jMenuItem7);
+
+        jMenuItem8.setText("Quản lý hóa đơn");
+        jMenu2.add(jMenuItem8);
+
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Thống kê");
+
+        jMenuItem9.setText("Tổng hợp-Thống kê");
+        jMenu3.add(jMenuItem9);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -109,7 +152,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(81, 81, 81))
             .addComponent(jTabbedPane1)
         );
@@ -172,7 +215,17 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
