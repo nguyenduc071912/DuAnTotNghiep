@@ -110,7 +110,7 @@ public class LoadForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                var dialog = new LoadForm(new javax.swing.JFrame(), true);
+                LoadForm dialog = new LoadForm(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

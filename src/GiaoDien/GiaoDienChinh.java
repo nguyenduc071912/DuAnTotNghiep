@@ -114,7 +114,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jToolBar1.add(jButton7);
 
         jButton8.setText("Trợ giúp");
-        jButton8.setFocusable(false);
         jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton8);
