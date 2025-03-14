@@ -41,7 +41,7 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 102, 204));
         jLabel1.setText("Đăng Nhập");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Tên Tài Khoản:");
 
         txtTenTK.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +50,7 @@ public class DangNhap extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Mật Khẩu:");
 
         txtMK.addActionListener(new java.awt.event.ActionListener() {
@@ -59,10 +59,10 @@ public class DangNhap extends javax.swing.JFrame {
             }
         });
 
-        btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnThoat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnThoat.setText("Thoát");
 
-        btnDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnDangNhap.setText("Đăng Nhập");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logoBonbon.png"))); // NOI18N
@@ -90,7 +90,7 @@ public class DangNhap extends javax.swing.JFrame {
                                 .addComponent(btnThoat)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnDangNhap)))
-                        .addContainerGap(25, Short.MAX_VALUE))
+                        .addContainerGap(33, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)

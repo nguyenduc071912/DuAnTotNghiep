@@ -45,7 +45,7 @@ public class DoiMatKhau extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 102, 204));
         jLabel1.setText("Đổi Mật Khẩu");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Tên Tài Khoản:");
 
         txtTenTK.addActionListener(new java.awt.event.ActionListener() {
@@ -54,7 +54,7 @@ public class DoiMatKhau extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Mật Khẩu Cũ:");
 
         txtMKCu.addActionListener(new java.awt.event.ActionListener() {
@@ -63,10 +63,10 @@ public class DoiMatKhau extends javax.swing.JFrame {
             }
         });
 
-        btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnThoat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnThoat.setText("Thoát");
 
-        btnXacNhan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnXacNhan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnXacNhan.setText("Xác Nhận");
         btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +76,7 @@ public class DoiMatKhau extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logoBonbon.png"))); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Mật Khẩu Mới:");
 
         txtMKMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +85,7 @@ public class DoiMatKhau extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Xác Nhận Mật Khẩu:");
 
         txtXacNhan.addActionListener(new java.awt.event.ActionListener() {
