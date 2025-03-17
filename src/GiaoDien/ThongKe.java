@@ -96,7 +96,7 @@ public class ThongKe extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 953, Short.MAX_VALUE)
+            .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

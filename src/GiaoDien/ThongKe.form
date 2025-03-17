@@ -28,7 +28,7 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Component id="jTabbedPane5" alignment="0" pref="953" max="32767" attributes="0"/>
+          <Component id="jTabbedPane5" alignment="0" pref="945" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">

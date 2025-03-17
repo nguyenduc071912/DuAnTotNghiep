@@ -143,7 +143,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
                         .addGap(161, 161, 161)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
