@@ -48,7 +48,7 @@ public class QuanLyHDCT extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 102, 204));
+        jLabel1.setForeground(new java.awt.Color(153, 0, 51));
         jLabel1.setText("Quản lý hóa đơn chi tiết");
 
         tblHDCT.setModel(new javax.swing.table.DefaultTableModel(
