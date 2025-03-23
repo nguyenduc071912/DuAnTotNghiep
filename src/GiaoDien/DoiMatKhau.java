@@ -65,6 +65,11 @@ public class DoiMatKhau extends javax.swing.JFrame {
 
         btnThoat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
         btnXacNhan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnXacNhan.setText("Xác Nhận");
@@ -178,6 +183,10 @@ public class DoiMatKhau extends javax.swing.JFrame {
     private void txtXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXacNhanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtXacNhanActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThoatActionPerformed
 
     /**
      * @param args the command line arguments

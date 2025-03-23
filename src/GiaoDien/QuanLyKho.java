@@ -55,7 +55,7 @@ public class QuanLyKho extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Mã nguyên liệu", "Tên nguyên liệu", "Số liệu"
+                "Mã nguyên liệu", "Tên nguyên liệu", "Số lượng"
             }
         ));
         jScrollPane2.setViewportView(tblKho);

@@ -31,15 +31,15 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btnNhanVien = new javax.swing.JButton();
+        btnSanPham = new javax.swing.JButton();
+        btnKhachHang = new javax.swing.JButton();
+        btnDonHang = new javax.swing.JButton();
+        btnHoaDon = new javax.swing.JButton();
+        btnTongHopThongKe = new javax.swing.JButton();
+        btnGioiThieu = new javax.swing.JButton();
+        btnTroGiup = new javax.swing.JButton();
+        btnDoiMatKhau = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -63,64 +63,69 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        jButton1.setText("Nhân viên");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
-
-        jButton2.setText("Sản phẩm");
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnNhanVien.setText("Nhân viên");
+        btnNhanVien.setFocusable(false);
+        btnNhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNhanVien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnNhanVienActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton2);
+        jToolBar1.add(btnNhanVien);
 
-        jButton3.setText("Khách hàng");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
-
-        jButton4.setText("Đơn hàng");
-        jToolBar1.add(jButton4);
-
-        jButton5.setText("Hóa đơn");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton5);
-
-        jButton6.setText("Tổng hợp-Thống kê");
-        jButton6.setFocusable(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton6);
-
-        jButton7.setText("Giới thiệu");
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnSanPham.setText("Sản phẩm");
+        btnSanPham.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSanPham.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnSanPhamActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton7);
+        jToolBar1.add(btnSanPham);
 
-        jButton8.setText("Trợ giúp");
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton8);
+        btnKhachHang.setText("Khách hàng");
+        btnKhachHang.setFocusable(false);
+        btnKhachHang.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnKhachHang.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnKhachHang);
 
-        jButton9.setText("Đổi mật khẩu");
-        jButton9.setFocusable(false);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton9);
+        btnDonHang.setText("Đơn hàng");
+        jToolBar1.add(btnDonHang);
+
+        btnHoaDon.setText("Hóa đơn");
+        btnHoaDon.setFocusable(false);
+        btnHoaDon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHoaDon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnHoaDon);
+
+        btnTongHopThongKe.setText("Tổng hợp-Thống kê");
+        btnTongHopThongKe.setFocusable(false);
+        btnTongHopThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTongHopThongKe.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnTongHopThongKe);
+
+        btnGioiThieu.setText("Giới thiệu");
+        btnGioiThieu.setFocusable(false);
+        btnGioiThieu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnGioiThieu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnGioiThieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGioiThieuActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnGioiThieu);
+
+        btnTroGiup.setText("Trợ giúp");
+        btnTroGiup.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTroGiup.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnTroGiup);
+
+        btnDoiMatKhau.setText("Đổi mật khẩu");
+        btnDoiMatKhau.setFocusable(false);
+        btnDoiMatKhau.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDoiMatKhau.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnDoiMatKhau);
 
         jMenu1.setText("Hệ thống");
 
@@ -202,13 +207,17 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGioiThieuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnGioiThieuActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSanPhamActionPerformed
+
+    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNhanVienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,15 +255,15 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton btnDoiMatKhau;
+    private javax.swing.JButton btnDonHang;
+    private javax.swing.JButton btnGioiThieu;
+    private javax.swing.JButton btnHoaDon;
+    private javax.swing.JButton btnKhachHang;
+    private javax.swing.JButton btnNhanVien;
+    private javax.swing.JButton btnSanPham;
+    private javax.swing.JButton btnTongHopThongKe;
+    private javax.swing.JButton btnTroGiup;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
