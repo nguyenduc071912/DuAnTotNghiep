@@ -129,15 +129,15 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jMenu1.setText("Hệ thống");
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Key.png"))); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Key.png"))); // NOI18N
         jMenuItem1.setText("Đăng nhập");
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Edit.png"))); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Edit.png"))); // NOI18N
         jMenuItem2.setText("Đổi mật khẩu");
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Log out.png"))); // NOI18N
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Stop.png"))); // NOI18N
         jMenuItem3.setText("Đăng xuất");
         jMenu1.add(jMenuItem3);
 
@@ -145,23 +145,23 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jMenu2.setText("Quản lý");
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/User group.png"))); // NOI18N
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/User.png"))); // NOI18N
         jMenuItem4.setText("Quản lý nhân viên");
         jMenu2.add(jMenuItem4);
 
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Buddy.png"))); // NOI18N
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Dog.png"))); // NOI18N
         jMenuItem5.setText("Quản lý sản phẩm");
         jMenu2.add(jMenuItem5);
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Boy.png"))); // NOI18N
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Boy.png"))); // NOI18N
         jMenuItem6.setText("Quản lý khách hàng");
         jMenu2.add(jMenuItem6);
 
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Basket.png"))); // NOI18N
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Add to basket.png"))); // NOI18N
         jMenuItem7.setText("Quản lý đơn hàng");
         jMenu2.add(jMenuItem7);
 
-        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Cash register.png"))); // NOI18N
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Dollar.png"))); // NOI18N
         jMenuItem8.setText("Quản lý hóa đơn");
         jMenu2.add(jMenuItem8);
 
@@ -169,7 +169,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jMenu3.setText("Thống kê");
 
-        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Bar chart.png"))); // NOI18N
+        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Bar chart.png"))); // NOI18N
         jMenuItem9.setText("Tổng hợp-Thống kê");
         jMenu3.add(jMenuItem9);
 
@@ -177,11 +177,11 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jMenu4.setText("Thông tin");
 
-        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Info.png"))); // NOI18N
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Info.png"))); // NOI18N
         jMenuItem10.setText("Giới thiệu");
         jMenu4.add(jMenuItem10);
 
-        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Help.png"))); // NOI18N
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png"))); // NOI18N
         jMenuItem11.setText("Trợ giúp");
         jMenu4.add(jMenuItem11);
 
