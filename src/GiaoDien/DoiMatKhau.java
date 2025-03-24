@@ -4,17 +4,72 @@
  */
 package GiaoDien;
 
+import Services.NhanVienSevices;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
  */
 public class DoiMatKhau extends javax.swing.JFrame {
-
+private static String url="jdbc:sqlserver://localhost:1433;database=DATN_PRO230;user=sa;password=123;trustServerCertificate=true";
     /**
      * Creates new form DoiMatKhau
      */
     public DoiMatKhau() {
         initComponents();
+        init();
+    }
+    void init() {
+        setLocationRelativeTo(null);
+    }
+    
+    private void DoiMatKhau() {
+        String TenTK = txtTenTK.getText();
+        String MKCu = new String(txtMKCu.getPassword());
+        String MKMoi = new String(txtMKMoi.getPassword());
+        String XacNhan = new String(txtXacNhan.getPassword());
+        
+        if (TenTK.isEmpty() || MKCu.isEmpty() || MKMoi.isEmpty() || XacNhan.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (!MKMoi.equals(XacNhan)) {
+            JOptionPane.showMessageDialog(this, "Mật khẩu mới không trùng khớp!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        try (Connection conn = DriverManager.getConnection(url)){
+            String sql = "SELECT TenDangNhap,MatKhau FROM NguoiDung WHERE TenDangNhap=? AND MatKhau=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, TenTK);
+            ps.setString(2, MKCu);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                sql = "UPDATE NguoiDung SET MatKhau=? WHERE TenDangNhap=?";
+                ps = conn.prepareStatement(sql);
+                ps.setString(1, MKMoi);
+                ps.setString(2, TenTK);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Tên đăng nhập hoặc mật khẩu cũ không đúng!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Lỗi kết nối cơ sở dữ liệu!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void Thoat() {
+        this.dispose();
     }
 
     /**
@@ -30,14 +85,14 @@ public class DoiMatKhau extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtTenTK = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtMKCu = new javax.swing.JTextField();
         btnThoat = new javax.swing.JButton();
         btnXacNhan = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtMKMoi = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtXacNhan = new javax.swing.JTextField();
+        txtMKMoi = new javax.swing.JPasswordField();
+        txtXacNhan = new javax.swing.JPasswordField();
+        txtMKCu = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,13 +112,8 @@ public class DoiMatKhau extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Mật Khẩu Cũ:");
 
-        txtMKCu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMKCuActionPerformed(evt);
-            }
-        });
-
         btnThoat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Exit.png"))); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +122,7 @@ public class DoiMatKhau extends javax.swing.JFrame {
         });
 
         btnXacNhan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnXacNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Accept.png"))); // NOI18N
         btnXacNhan.setText("Xác Nhận");
         btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,20 +135,8 @@ public class DoiMatKhau extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Mật Khẩu Mới:");
 
-        txtMKMoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMKMoiActionPerformed(evt);
-            }
-        });
-
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Xác Nhận Mật Khẩu:");
-
-        txtXacNhan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtXacNhanActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,9 +161,9 @@ public class DoiMatKhau extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtTenTK)
-                                    .addComponent(txtMKCu, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMKMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtMKMoi)
+                                    .addComponent(txtXacNhan, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                                    .addComponent(txtMKCu, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))))
                         .addGap(46, 46, 46))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -143,18 +182,18 @@ public class DoiMatKhau extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtTenTK, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtMKCu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(txtMKCu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtMKMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtMKMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtXacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnXacNhan)
                             .addComponent(btnThoat))))
@@ -168,24 +207,14 @@ public class DoiMatKhau extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTenTKActionPerformed
 
-    private void txtMKCuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMKCuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMKCuActionPerformed
-
-    private void txtMKMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMKMoiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMKMoiActionPerformed
-
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
+        this.DoiMatKhau();
     }//GEN-LAST:event_btnXacNhanActionPerformed
-
-    private void txtXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXacNhanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtXacNhanActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
+        this.Thoat();
     }//GEN-LAST:event_btnThoatActionPerformed
 
     /**
@@ -232,9 +261,9 @@ public class DoiMatKhau extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtMKCu;
-    private javax.swing.JTextField txtMKMoi;
+    private javax.swing.JPasswordField txtMKCu;
+    private javax.swing.JPasswordField txtMKMoi;
     private javax.swing.JTextField txtTenTK;
-    private javax.swing.JTextField txtXacNhan;
+    private javax.swing.JPasswordField txtXacNhan;
     // End of variables declaration//GEN-END:variables
 }

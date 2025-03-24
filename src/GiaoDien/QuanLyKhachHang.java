@@ -4,17 +4,36 @@
  */
 package GiaoDien;
 
+import Mode.KhachHang;
+import Services.KhachHangServices;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Administrator
  */
 public class QuanLyKhachHang extends javax.swing.JFrame {
-
+DefaultTableModel tableModel;
     /**
      * Creates new form QuanLyKhachHang
      */
     public QuanLyKhachHang() {
         initComponents();
+        initTable();
+        loadData();
+    }
+    public void initTable(){
+        tableModel = new DefaultTableModel();
+        tableModel.setColumnIdentifiers(new String[]{"Mã khách hàng","Tên khách hàng","Tuổi","Giới tính","Số điện thoại"});
+        tblKH.setModel(tableModel);
+    }
+    public void loadData(){
+        List<KhachHang> khList = KhachHangServices.getAll();
+        tableModel.setNumRows(0);
+        for(KhachHang kh: khList){
+            tableModel.addRow(new Object[]{kh.getMaKH(),kh.getTenKH(),kh.getTuoi(),kh.getGioiTinh(),kh.getSDT()});
+        }
     }
 
     /**
@@ -70,10 +89,25 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
         jRadioButton2.setText("Nữ");
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         tblKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,6 +123,11 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tblKH);
 
         btnTim.setText("Tìm kiếm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,6 +219,22 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTimActionPerformed
 
     /**
      * @param args the command line arguments

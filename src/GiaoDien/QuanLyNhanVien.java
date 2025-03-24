@@ -4,17 +4,38 @@
  */
 package GiaoDien;
 
+
+
+import Mode.NhanVien;
+import Services.NhanVienSevices;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Administrator
  */
 public class QuanLyNhanVien extends javax.swing.JFrame {
-
+DefaultTableModel tableModel;
     /**
      * Creates new form QuanLy
      */
     public QuanLyNhanVien() {
         initComponents();
+        initTable();
+        loadData();
+    }
+    public void initTable(){
+        tableModel = new DefaultTableModel();
+        tableModel.setColumnIdentifiers(new String[]{"Mã nhân viên","Tên nhân viên","Vai trò","Tuổi","Số điện thoại","Giới tính"});
+        tblNV.setModel(tableModel);
+    }
+    public void loadData(){
+        List<NhanVien> nvList = NhanVienSevices.getAll();
+        tableModel.setNumRows(0);
+        for(NhanVien nv: nvList){
+            tableModel.addRow(new Object[]{nv.getMaNV(),nv.getHoTenNV(),nv.getVaiTro(),nv.getTuoi(),nv.getSDT(),nv.getGioiTinh()});
+        }
     }
 
     /**
@@ -79,7 +100,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Nữ");
 
-        cboVaiTro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên", "Quản lý" }));
+        cboVaiTro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phục vụ", "Pha chế", "Thu ngân", "Bảo vệ" }));
 
         jLabel8.setText("Mã nhân viên");
 

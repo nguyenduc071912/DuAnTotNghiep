@@ -230,9 +230,11 @@
     <Component class="javax.swing.JComboBox" name="cboVaiTro">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="Nh&#xe2;n vi&#xea;n"/>
-            <StringItem index="1" value="Qu&#x1ea3;n l&#xfd;"/>
+          <StringArray count="4">
+            <StringItem index="0" value="Ph&#x1ee5;c v&#x1ee5;"/>
+            <StringItem index="1" value="Pha ch&#x1ebf;"/>
+            <StringItem index="2" value="Thu ng&#xe2;n"/>
+            <StringItem index="3" value="B&#x1ea3;o v&#x1ec7;"/>
           </StringArray>
         </Property>
       </Properties>

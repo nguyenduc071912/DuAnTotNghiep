@@ -28,7 +28,7 @@ public class DangNhap extends javax.swing.JDialog {
     }
     
     public NguoiDung DangNhap(){
-        String url = "jdbc:sqlserver://localhost:1433;databaseName=DATN_PRO230;user=sa;password=111;trustServerCertificate=true";
+        String url = "jdbc:sqlserver://localhost:1433;databaseName=DATN_PRO230;user=sa;password=123;trustServerCertificate=true";
         String ten = txtTenTK.getText();
         String mk = new String(txtMK.getPassword());
         String sql = "Select VaiTro From NguoiDung where TenDangNhap = ? AND MatKhau = ?";
