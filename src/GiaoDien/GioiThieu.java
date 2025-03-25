@@ -30,8 +30,10 @@ public class GioiThieu extends javax.swing.JFrame {
         lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
         txtGioiThieu.setEditable(false);
+        txtGioiThieu.setBorder(null);
         txtGioiThieu.setText("BonBonCoffee là phần mềm quản lý đa năng, được thiết kế để phục vụ quản lý quán cà phê. \n\n Phần mềm này cung cấp đầy đủ các tính năng và nghiệp vụ chuyên sâu, giúp chủ quán cà phê tối ưu hóa quy trình vận hành và nâng cao hiệu quả kinh doanh.\n\nCác tính năng nổi bật của BonBonCoffee:\n1, Quản lý nhân viên: Tạo và phân quyền cho từng nhân viên (thu ngân, phục vụ, quản lý, v.v.) và đánh giá hiệu quả. \n2, Quản lý khách hàng: Lưu trữ thông tin khách hàng, lịch sử mua hàng và sở thích.\n3, Quản lý sản phẩm: Quản lý danh mục đồ uống, món ăn kèm và nguyên liệu.\n4, Quản lý kho: Kiểm soát tồn kho, tự động cảnh báo khi hàng sắp hết.\n5, Quản lý đơn hàng: Nhận và xử lý đơn hàng nhanh chóng, chính xác và theo dõi trạng thái đơn hàng từ lúc đặt đến khi hoàn tất.\n6, Quản lý hóa đơn và hóa đơn chi tiết: Xem chi tiết từng hóa đơn với thông tin sản phẩm, giá cả, phương thức thanh toán.");
         txtGioiThieu.setPreferredSize(new java.awt.Dimension(512, 175));
         txtGioiThieu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -41,6 +43,7 @@ public class GioiThieu extends javax.swing.JFrame {
         });
 
         lblLogo.setBackground(new java.awt.Color(255, 255, 255));
+        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logoBonbon.png"))); // NOI18N
         lblLogo.setOpaque(true);
         lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -53,19 +56,15 @@ public class GioiThieu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(lblLogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtGioiThieu, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(txtGioiThieu, javax.swing.GroupLayout.DEFAULT_SIZE, 997, Short.MAX_VALUE)
+            .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtGioiThieu, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtGioiThieu, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

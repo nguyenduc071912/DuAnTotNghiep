@@ -23,7 +23,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     }
 
     void init() {
-        setSize(1000, 600);
         setLocationRelativeTo(null);
 
         new LoadForm(this, true).setVisible(true);
@@ -49,6 +48,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         btnKhachHang = new javax.swing.JButton();
         btnDonHang = new javax.swing.JButton();
         btnHoaDon = new javax.swing.JButton();
+        btnHDCT = new javax.swing.JButton();
         btnTongHopThongKe = new javax.swing.JButton();
         btnGioiThieu = new javax.swing.JButton();
         btnDoiMatKhau = new javax.swing.JButton();
@@ -66,6 +66,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         mniQLKH = new javax.swing.JMenuItem();
         mniQLDH = new javax.swing.JMenuItem();
         mniQLHD = new javax.swing.JMenuItem();
+        mniHDCT = new javax.swing.JMenuItem();
         jmenu = new javax.swing.JMenu();
         mniThongKe = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -129,6 +130,17 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jToolBar1.add(btnHoaDon);
 
+        btnHDCT.setText("Hóa đơn chi tiết");
+        btnHDCT.setFocusable(false);
+        btnHDCT.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHDCT.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHDCT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHDCTActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnHDCT);
+
         btnTongHopThongKe.setText("Tổng hợp-Thống kê");
         btnTongHopThongKe.setFocusable(false);
         btnTongHopThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -172,7 +184,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(957, Short.MAX_VALUE)
+                .addContainerGap(1026, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -262,6 +274,15 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jMenu2.add(mniQLHD);
 
+        mniHDCT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Price list.png"))); // NOI18N
+        mniHDCT.setText("Quản lý HĐ chi tiết");
+        mniHDCT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniHDCTActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mniHDCT);
+
         jMenuBar1.add(jMenu2);
 
         jmenu.setText("Thống kê");
@@ -305,7 +326,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TabGDC, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+                .addComponent(TabGDC, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -530,6 +551,34 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         TabGDC.addTab("Giới thiệu", panel);
     }//GEN-LAST:event_mniGioiThieuActionPerformed
 
+    private void btnHDCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHDCTActionPerformed
+        // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Hóa đơn chi tiết")) {
+                JOptionPane.showMessageDialog(null, "Tab hóa đơn chi tiết đã tồn tại!");
+                return;
+            }
+        }
+        QuanLyHDCT qlhdct = new QuanLyHDCT();
+        JPanel panel = new JPanel();
+        panel.add(qlhdct.getContentPane());
+        TabGDC.addTab("Hóa đơn chi tiết", panel);
+    }//GEN-LAST:event_btnHDCTActionPerformed
+
+    private void mniHDCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHDCTActionPerformed
+        // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Hóa đơn chi tiết")) {
+                JOptionPane.showMessageDialog(null, "Tab hóa đơn chi tiết đã tồn tại!");
+                return;
+            }
+        }
+        QuanLyHDCT qlhdct = new QuanLyHDCT();
+        JPanel panel = new JPanel();
+        panel.add(qlhdct.getContentPane());
+        TabGDC.addTab("Hóa đơn chi tiết", panel);
+    }//GEN-LAST:event_mniHDCTActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -570,6 +619,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     private javax.swing.JButton btnDoiMatKhau;
     private javax.swing.JButton btnDonHang;
     private javax.swing.JButton btnGioiThieu;
+    private javax.swing.JButton btnHDCT;
     private javax.swing.JButton btnHoaDon;
     private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnNhanVien;
@@ -591,6 +641,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniDangXuat;
     private javax.swing.JMenuItem mniDoiMatKhau;
     private javax.swing.JMenuItem mniGioiThieu;
+    private javax.swing.JMenuItem mniHDCT;
     private javax.swing.JMenuItem mniQLDH;
     private javax.swing.JMenuItem mniQLHD;
     private javax.swing.JMenuItem mniQLKH;

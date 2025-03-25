@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +18,9 @@ import javax.swing.JOptionPane;
  * @author Admin
  */
 public class DoiMatKhau extends javax.swing.JFrame {
-private static String url="jdbc:sqlserver://localhost:1433;database=DATN_PRO230;user=sa;password=123;trustServerCertificate=true";
+
+    private static String url = "jdbc:sqlserver://localhost:1433;database=DATN_PRO230;user=sa;password=123;trustServerCertificate=true";
+
     /**
      * Creates new form DoiMatKhau
      */
@@ -25,16 +28,19 @@ private static String url="jdbc:sqlserver://localhost:1433;database=DATN_PRO230;
         initComponents();
         init();
     }
+
     void init() {
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
+
     }
-    
+
     private void DoiMatKhau() {
         String TenTK = txtTenTK.getText();
         String MKCu = new String(txtMKCu.getPassword());
         String MKMoi = new String(txtMKMoi.getPassword());
         String XacNhan = new String(txtXacNhan.getPassword());
-        
+
         if (TenTK.isEmpty() || MKCu.isEmpty() || MKMoi.isEmpty() || XacNhan.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin!", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;
@@ -44,8 +50,8 @@ private static String url="jdbc:sqlserver://localhost:1433;database=DATN_PRO230;
             JOptionPane.showMessageDialog(this, "Mật khẩu mới không trùng khớp!", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        try (Connection conn = DriverManager.getConnection(url)){
+
+        try (Connection conn = DriverManager.getConnection(url)) {
             String sql = "SELECT TenDangNhap,MatKhau FROM NguoiDung WHERE TenDangNhap=? AND MatKhau=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, TenTK);

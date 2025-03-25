@@ -34,7 +34,7 @@ DefaultTableModel tableModel;
         List<NhanVien> nvList = NhanVienSevices.getAll();
         tableModel.setNumRows(0);
         for(NhanVien nv: nvList){
-            tableModel.addRow(new Object[]{nv.getMaNV(),nv.getHoTenNV(),nv.getVaiTro(),nv.getTuoi(),nv.getSDT(),nv.getGioiTinh()});
+            tableModel.addRow(new Object[]{nv.getMaNV(),nv.getHoTenNV(),nv.getVaiTro(),nv.getTuoi(),nv.getSDT(),nv.getGioiTinh() == 0 ? "Nam":"Nữ"});
         }
     }
 
