@@ -316,52 +316,100 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
     private void btnGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGioiThieuActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Giới thiệu")) {
+                JOptionPane.showMessageDialog(null, "Tab giới thiệu đã tồn tại!");
+                return;
+            }
+        }
         GioiThieu gt = new GioiThieu();
-        gt.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(gt.getContentPane());
+        TabGDC.addTab("Giới thiệu", panel);
     }//GEN-LAST:event_btnGioiThieuActionPerformed
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Sản phẩm")) {
+                JOptionPane.showMessageDialog(null, "Tab sản phẩm đã tồn tại!");
+                return;
+            }
+        }
         QuanLySanPham qlsp = new QuanLySanPham();
-        qlsp.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(qlsp.getContentPane());
+        TabGDC.addTab("Sản phẩm", panel);
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
-            if (TabGDC.getTitleAt(i).equals("Nhân Viên")) {
-                JOptionPane.showMessageDialog(null, "Tab Nhân Viên đã tồn tại!");
+            if (TabGDC.getTitleAt(i).equals("Nhân viên")) {
+                JOptionPane.showMessageDialog(null, "Tab nhân viên đã tồn tại!");
                 return;
             }
         }
         QuanLyNhanVien qlnv = new QuanLyNhanVien();
         JPanel panel = new JPanel();
         panel.add(qlnv.getContentPane());
-        TabGDC.addTab("Nhân Viên", panel);
+        TabGDC.addTab("Nhân viên", panel);
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Khách hàng")) {
+                JOptionPane.showMessageDialog(null, "Tab khách hàng đã tồn tại!");
+                return;
+            }
+        }
         QuanLyKhachHang qlkh = new QuanLyKhachHang();
-        qlkh.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(qlkh.getContentPane());
+        TabGDC.addTab("Khách hàng", panel);
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonHangActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Đơn hàng")) {
+                JOptionPane.showMessageDialog(null, "Tab đơn hàng đã tồn tại!");
+                return;
+            }
+        }
         QuanLyDonHang qldh = new QuanLyDonHang();
-        qldh.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(qldh.getContentPane());
+        TabGDC.addTab("Đơn hàng", panel);
     }//GEN-LAST:event_btnDonHangActionPerformed
 
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Hóa đơn")) {
+                JOptionPane.showMessageDialog(null, "Tab hóa đơn đã tồn tại!");
+                return;
+            }
+        }
         QuanLyHoaDon qlhd = new QuanLyHoaDon();
-        qlhd.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(qlhd.getContentPane());
+        TabGDC.addTab("Hóa đơn", panel);
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnTongHopThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTongHopThongKeActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Tổng hợp - thống kê")) {
+                JOptionPane.showMessageDialog(null, "Tab tổng hợp - thống kê đã tồn tại!");
+                return;
+            }
+        }
         ThongKe tk = new ThongKe();
-        tk.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(tk.getContentPane());
+        TabGDC.addTab("Tổng hợp - thống kê", panel);
     }//GEN-LAST:event_btnTongHopThongKeActionPerformed
 
     private void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
@@ -386,44 +434,100 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
     private void mniQLKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLKHActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Khách hàng")) {
+                JOptionPane.showMessageDialog(null, "Tab khách hàng đã tồn tại!");
+                return;
+            }
+        }
         QuanLyKhachHang qlkh = new QuanLyKhachHang();
-        qlkh.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(qlkh.getContentPane());
+        TabGDC.addTab("Khách hàng", panel);
     }//GEN-LAST:event_mniQLKHActionPerformed
 
     private void mniQLNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLNVActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Nhân viên")) {
+                JOptionPane.showMessageDialog(null, "Tab nhân viên đã tồn tại!");
+                return;
+            }
+        }
         QuanLyNhanVien qlnv = new QuanLyNhanVien();
-        qlnv.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(qlnv.getContentPane());
+        TabGDC.addTab("Nhân viên", panel);
     }//GEN-LAST:event_mniQLNVActionPerformed
 
     private void mniQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLSPActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Sản phẩm")) {
+                JOptionPane.showMessageDialog(null, "Tab sản phẩm đã tồn tại!");
+                return;
+            }
+        }
         QuanLySanPham qlsp = new QuanLySanPham();
-        qlsp.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(qlsp.getContentPane());
+        TabGDC.addTab("Sản phẩm", panel);
     }//GEN-LAST:event_mniQLSPActionPerformed
 
     private void mniQLDHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLDHActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Đơn hàng")) {
+                JOptionPane.showMessageDialog(null, "Tab đơn hàng đã tồn tại!");
+                return;
+            }
+        }
         QuanLyDonHang qldh = new QuanLyDonHang();
-        qldh.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(qldh.getContentPane());
+        TabGDC.addTab("Đơn hàng", panel);
     }//GEN-LAST:event_mniQLDHActionPerformed
 
     private void mniQLHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLHDActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Hóa đơn")) {
+                JOptionPane.showMessageDialog(null, "Tab hóa đơn đã tồn tại!");
+                return;
+            }
+        }
         QuanLyHoaDon qlhd = new QuanLyHoaDon();
-        qlhd.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(qlhd.getContentPane());
+        TabGDC.addTab("Hóa đơn", panel);
     }//GEN-LAST:event_mniQLHDActionPerformed
 
     private void mniThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongKeActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Tổng hợp - thống kê")) {
+                JOptionPane.showMessageDialog(null, "Tab tổng hợp - thống kê đã tồn tại!");
+                return;
+            }
+        }
         ThongKe tk = new ThongKe();
-        tk.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(tk.getContentPane());
+        TabGDC.addTab("Tổng hợp - thống kê", panel);
     }//GEN-LAST:event_mniThongKeActionPerformed
 
     private void mniGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniGioiThieuActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Giới thiệu")) {
+                JOptionPane.showMessageDialog(null, "Tab giới thiệu đã tồn tại!");
+                return;
+            }
+        }
         GioiThieu gt = new GioiThieu();
-        gt.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(gt.getContentPane());
+        TabGDC.addTab("Giới thiệu", panel);
     }//GEN-LAST:event_mniGioiThieuActionPerformed
 
     /**
