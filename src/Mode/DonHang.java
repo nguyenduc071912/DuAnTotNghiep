@@ -10,12 +10,12 @@ package Mode;
  */
 public class DonHang {
     String MaDH,MaNV,MaKH,MaSP,Size,NgayDatHang,HinhThucThanhToan;
-    int SoLuong;
+    int SoLuong,TongTien;
 
     public DonHang() {
     }
 
-    public DonHang(String MaDH, String MaNV, String MaKH, String MaSP, String Size, String NgayDatHang, String HinhThucThanhToan, int SoLuong) {
+    public DonHang(String MaDH, String MaNV, String MaKH, String MaSP, String Size, String NgayDatHang, String HinhThucThanhToan, int SoLuong, int TongTien) {
         this.MaDH = MaDH;
         this.MaNV = MaNV;
         this.MaKH = MaKH;
@@ -24,6 +24,7 @@ public class DonHang {
         this.NgayDatHang = NgayDatHang;
         this.HinhThucThanhToan = HinhThucThanhToan;
         this.SoLuong = SoLuong;
+        this.TongTien = TongTien;
     }
 
     public String getMaDH() {
@@ -89,6 +90,16 @@ public class DonHang {
     public void setSoLuong(int SoLuong) {
         this.SoLuong = SoLuong;
     }
+
+    public int getTongTien() {
+        return TongTien;
+    }
+
+    public void setTongTien(int TongTien) {
+        this.TongTien = TongTien;
+    }
+
+    
     
     
 }
