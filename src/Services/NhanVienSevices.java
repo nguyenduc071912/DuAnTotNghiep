@@ -4,7 +4,7 @@
  */
 package Services;
 
-import Mode.KhachHang;
+
 import Mode.NhanVien;
 import java.sql.Connection;
 import java.sql.DriverManager;

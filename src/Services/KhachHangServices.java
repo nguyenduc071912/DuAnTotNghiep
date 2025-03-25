@@ -41,7 +41,7 @@ public class KhachHangServices {
     }
     
     public static KhachHang getByName(String MaKH){
-        String sql = "select MaKH, TenKH, YEAR(GETDATE()) - Tuoi AS Tuoi, GioiTinh,SDT from KhachHang	where MaKH like ?";
+        String sql = "select MaKH, TenKH, YEAR(GETDATE()) - Tuoi AS Tuoi, GioiTinh,SDT from KhachHang	where MaKH = ?";
         KhachHang kh = new KhachHang();
         try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){
             stm.setString(1,kh.getMaKH());

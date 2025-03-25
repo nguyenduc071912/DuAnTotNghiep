@@ -4,17 +4,37 @@
  */
 package GiaoDien;
 
+
+import Mode.SanPham;
+import Services.SanPhamServices;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Administrator
  */
 public class QuanLySanPham extends javax.swing.JFrame {
-
+DefaultTableModel tableModel;
     /**
      * Creates new form SanPham
      */
     public QuanLySanPham() {
         initComponents();
+        initTable();
+        loadData();
+    }
+    public void initTable(){
+        tableModel = new DefaultTableModel();
+        tableModel.setColumnIdentifiers(new String[]{"Mã sản phẩm","Tên nguyên liệu","Tên sản phẩm","Giá tiền","Loại SP","Mô tả"});
+        tblSP.setModel(tableModel);
+    }
+    public void loadData(){
+        List<SanPham> spList = SanPhamServices.getAll();
+        tableModel.setNumRows(0);
+        for(SanPham sp: spList){
+            tableModel.addRow(new Object[]{sp.getMaSP(),sp.getMaNL(),sp.getTenSP(),sp.getGiaTien(),sp.getLoaiSP(),sp.getMoTa()});
+        }
     }
 
     /**
@@ -54,6 +74,8 @@ public class QuanLySanPham extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(153, 0, 51));
         jLabel1.setText("Quản lý sản phẩm");
 
+        cboLoaiSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nước ép", "Cà phê", "Trà", "Trà sữa" }));
+
         jLabel5.setText("Tên sản phẩm");
 
         jLabel6.setText("Giá tiền");
@@ -63,12 +85,27 @@ public class QuanLySanPham extends javax.swing.JFrame {
         jLabel3.setText("Mã nguyên liệu");
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Loại sản phẩm");
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Mô tả");
 
@@ -90,6 +127,11 @@ public class QuanLySanPham extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tblSP);
 
         btnTim.setText("Tìm kiếm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,6 +237,22 @@ public class QuanLySanPham extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTimActionPerformed
 
     /**
      * @param args the command line arguments
