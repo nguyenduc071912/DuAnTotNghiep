@@ -47,11 +47,11 @@ public class SanPhamServices {
         String sql = "select MaSP,MaNL,TenSP,GiaTien,LoaiSP,MoTa from SanPham where MaSP = ?";
         SanPham sp = new SanPham();
         try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){
-            stm.setString(1,sp.getMaSP());
+            stm.setString(1,MaSP);
             ResultSet rs = stm.executeQuery();
             while(rs.next()){
                 sp.setMaSP(rs.getString("MaSP"));
-                sp.setMaNL(rs.getString("TenNL"));
+                sp.setMaNL(rs.getString("MaNL"));
                 sp.setTenSP(rs.getString("TenSP"));
                 sp.setGiaTien(rs.getFloat("GiaTien"));
                 sp.setLoaiSP(rs.getString("LoaiSP"));

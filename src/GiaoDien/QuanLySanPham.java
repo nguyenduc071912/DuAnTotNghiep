@@ -8,6 +8,7 @@ package GiaoDien;
 import Mode.SanPham;
 import Services.SanPhamServices;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -124,6 +125,11 @@ DefaultTableModel tableModel;
                 "Mã sản phẩm", "Tên nguyên liệu", "Tên sản phẩm", "Giá tiền", "Loại sản phẩm", "Mô tả"
             }
         ));
+        tblSP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSPMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblSP);
 
         btnTim.setText("Tìm kiếm");
@@ -235,19 +241,134 @@ DefaultTableModel tableModel;
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMaSP.getText().isEmpty()){
+            sb.append("Nhập mã sản phẩm\n");
+        }
+        if(txtMaNL.getText().isEmpty()){
+            sb.append("Nhập mã nguyên liệu\n");
+        }
+        if(txtTenSP.getText().isEmpty()){
+            sb.append("Nhập tên sản phẩm\n");
+        }
+        if(txtGiaTien.getText().isEmpty()){
+            sb.append("Nhập giá tiền\n");
+        }
+        if(txtaMoTa.getText().isEmpty()){
+            sb.append("Nhập mô tả\n");
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            SanPham sp = new SanPham();
+            sp.setMaSP(txtMaSP.getText());
+            sp.setMaNL(txtMaNL.getText());
+            sp.setTenSP(txtTenSP.getText());
+            sp.setGiaTien(Float.parseFloat(txtGiaTien.getText()));
+            sp.setLoaiSP(cboLoaiSP.getSelectedItem().toString());
+            sp.setMoTa(txtaMoTa.getText());
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn thêm","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(SanPhamServices.Create(sp)){
+                    JOptionPane.showMessageDialog(this,"Thêm thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Thêm thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMaSP.getText().isEmpty()){
+            sb.append("Nhập mã sản phẩm\n");
+        }
+        if(txtMaNL.getText().isEmpty()){
+            sb.append("Nhập mã nguyên liệu\n");
+        }
+        if(txtTenSP.getText().isEmpty()){
+            sb.append("Nhập tên sản phẩm\n");
+        }
+        if(txtGiaTien.getText().isEmpty()){
+            sb.append("Nhập giá tiền\n");
+        }
+        if(txtaMoTa.getText().isEmpty()){
+            sb.append("Nhập mô tả\n");
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            SanPham sp = new SanPham();
+            sp.setMaSP(txtMaSP.getText());
+            sp.setMaNL(txtMaNL.getText());
+            sp.setTenSP(txtTenSP.getText());
+            sp.setGiaTien(Float.parseFloat(txtGiaTien.getText()));
+            sp.setLoaiSP(cboLoaiSP.getSelectedItem().toString());
+            sp.setMoTa(txtaMoTa.getText());
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn sửa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(SanPhamServices.Update(sp)){
+                    JOptionPane.showMessageDialog(this,"Sửa thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"sửa thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMaSP.getText().isEmpty()){
+            sb.append("Nhập mã sản phẩm\n");
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            SanPham sp = new SanPham();
+            sp.setMaSP(txtMaSP.getText());
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn xóa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(SanPhamServices.Delete(sp)){
+                    JOptionPane.showMessageDialog(this,"Xóa thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Xóa thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTimActionPerformed
+
+    private void tblSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSPMouseClicked
+        // TODO add your handling code here:
+        int row = tblSP.getSelectedRow();
+        if(row>-1){
+            String ma = (String) tblSP.getValueAt(row, 0);
+            SanPham sp = SanPhamServices.getByName(ma);
+            txtMaSP.setText(sp.getMaSP());
+            txtMaNL.setText(sp.getMaNL());
+            txtTenSP.setText(sp.getTenSP());
+            txtGiaTien.setText(String.valueOf(sp.getGiaTien()));
+            cboLoaiSP.setSelectedItem(sp.getLoaiSP());
+            txtaMoTa.setText(sp.getMoTa());
+        }
+    }//GEN-LAST:event_tblSPMouseClicked
 
     /**
      * @param args the command line arguments

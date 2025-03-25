@@ -41,10 +41,10 @@ public class KhachHangServices {
     }
     
     public static KhachHang getByName(String MaKH){
-        String sql = "select MaKH, TenKH, YEAR(GETDATE()) - Tuoi AS Tuoi, GioiTinh,SDT from KhachHang	where MaKH = ?";
+        String sql = "select MaKH, TenKH,Tuoi, GioiTinh,SDT from KhachHang where MaKH = ?";
         KhachHang kh = new KhachHang();
         try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){
-            stm.setString(1,kh.getMaKH());
+            stm.setString(1,MaKH);
             ResultSet rs = stm.executeQuery();
             while(rs.next()){
                 kh.setMaKH(rs.getString("MaKH"));

@@ -8,6 +8,7 @@ package GiaoDien;
 import Mode.Kho;
 import Services.KhoServices;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -80,6 +81,11 @@ public class QuanLyKho extends javax.swing.JFrame {
                 "Mã nguyên liệu", "Tên nguyên liệu", "Số lượng", "Đơn vị"
             }
         ));
+        tblKho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblKhoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblKho);
 
         jLabel2.setText("Mã nguyên liệu");
@@ -215,15 +221,118 @@ public class QuanLyKho extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMa.getText().isEmpty()){
+            sb.append("Nhập mã nguyên liệu\n");
+        }
+        if(txtTen.getText().isEmpty()){
+            sb.append("Nhập tên nguyên liệu\n");
+        }
+        if(txtSoluong.getText().isEmpty()){
+            sb.append("Nhập số lượng\n");
+        }
+        if(txtDonVi.getText().isEmpty()){
+            sb.append("Nhập đơn vị\n");
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            Kho k = new Kho();
+            k.setMaNL(txtMa.getText());
+            k.setTenNL(txtTen.getText());
+            k.setSoLuong(Integer.parseInt(txtSoluong.getText()));
+            k.setDonVi(txtDonVi.getText());
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn thêm","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(KhoServices.Create(k)){
+                    JOptionPane.showMessageDialog(this,"Thêm thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Thêm thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMa.getText().isEmpty()){
+            sb.append("Nhập mã nguyên liệu\n");
+        }
+        if(txtTen.getText().isEmpty()){
+            sb.append("Nhập tên nguyên liệu\n");
+        }
+        if(txtSoluong.getText().isEmpty()){
+            sb.append("Nhập số lượng\n");
+        }
+        if(txtDonVi.getText().isEmpty()){
+            sb.append("Nhập đơn vị\n");
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            Kho k = new Kho();
+            k.setMaNL(txtMa.getText());
+            k.setTenNL(txtTen.getText());
+            k.setSoLuong(Integer.parseInt(txtSoluong.getText()));
+            k.setDonVi(txtDonVi.getText());
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn sửa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(KhoServices.Update(k)){
+                    JOptionPane.showMessageDialog(this,"Sửa thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Sửa thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMa.getText().isEmpty()){
+            sb.append("Nhập mã nguyên liệu\n");
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            Kho k = new Kho();
+            k.setMaNL(txtMa.getText());
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn xóa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(KhoServices.Delete(k)){
+                    JOptionPane.showMessageDialog(this,"Xóa thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Xóa thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void tblKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhoMouseClicked
+        // TODO add your handling code here:
+        int row = tblKho.getSelectedRow();
+        if(row>-1){
+            String ma = (String) tblKho.getValueAt(row, 0);
+            Kho k = KhoServices.getByName(ma);
+            txtMa.setText(k.getMaNL());
+            txtTen.setText(k.getTenNL());
+            txtSoluong.setText(String.valueOf(k.getSoLuong()));
+            txtDonVi.setText(k.getDonVi());
+        }
+    }//GEN-LAST:event_tblKhoMouseClicked
 
     /**
      * @param args the command line arguments

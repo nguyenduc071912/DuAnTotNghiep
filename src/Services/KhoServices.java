@@ -41,10 +41,10 @@ public class KhoServices {
     }
     
     public static Kho getByName(String MaNL){
-        String sql = "select * where MaNL = ?";
+        String sql = "select * from Kho where MaNL = ?";
         Kho k = new Kho();
         try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){
-            stm.setString(1,k.getMaNL());
+            stm.setString(1,MaNL);
             ResultSet rs = stm.executeQuery();
             while(rs.next()){
                 k.setMaNL(rs.getString("MaNL"));

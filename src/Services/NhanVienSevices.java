@@ -43,10 +43,10 @@ public class NhanVienSevices {
     }
     
     public static NhanVien getByName(String MaNV){
-        String sql = "select MaNV, HoTenNV, VaiTro, YEAR(GETDATE()) - Tuoi AS Tuoi, SDT, GioiTinh from NhanVien where MaNV = ?";
+        String sql = "select MaNV, HoTenNV, VaiTro,Tuoi, SDT, GioiTinh from NhanVien where MaNV = ?";
         NhanVien nv = new NhanVien();
         try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){
-            stm.setString(1,nv.getMaNV());
+            stm.setString(1,MaNV);
             ResultSet rs = stm.executeQuery();
             while(rs.next()){
                 nv.setMaNV(rs.getString("MaNV"));

@@ -6,7 +6,9 @@ package GiaoDien;
 
 import Mode.KhachHang;
 import Services.KhachHangServices;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -56,8 +58,8 @@ DefaultTableModel tableModel;
         jLabel5 = new javax.swing.JLabel();
         txtTuoi = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rdoNam = new javax.swing.JRadioButton();
+        rdoNu = new javax.swing.JRadioButton();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -82,11 +84,11 @@ DefaultTableModel tableModel;
 
         jLabel6.setText("Số điện thoại");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Nam");
+        buttonGroup1.add(rdoNam);
+        rdoNam.setText("Nam");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Nữ");
+        buttonGroup1.add(rdoNu);
+        rdoNu.setText("Nữ");
 
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +122,11 @@ DefaultTableModel tableModel;
                 "Mã khách hàng", "Tên khách hàng", "Tuổi", "Giới tính", "Số điện thoại"
             }
         ));
+        tblKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblKHMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblKH);
 
         btnTim.setText("Tìm kiếm");
@@ -162,9 +169,9 @@ DefaultTableModel tableModel;
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(rdoNam, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(rdoNu, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtTuoi, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txtSDT)
@@ -203,8 +210,8 @@ DefaultTableModel tableModel;
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2))
+                            .addComponent(rdoNam)
+                            .addComponent(rdoNu))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -225,19 +232,144 @@ DefaultTableModel tableModel;
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMa.getText().isEmpty()){
+            sb.append("Nhập mã khách hàng\n");
+        }
+        if(txtTen.getText().isEmpty()){
+            sb.append("Nhập tên khách hàng\n");
+        }
+        if(txtTuoi.getText().isEmpty()){
+            sb.append("Nhập tuổi khách hàng\n");
+        }
+        if(!rdoNam.isSelected() && !rdoNu.isSelected()){
+            sb.append("Chọn giới tính khách hàng\n");
+        }
+        if(txtSDT.getText().isEmpty()){
+            sb.append("Nhập số điện thoại khách hàng\n");
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            KhachHang kh = new KhachHang();
+            kh.setMaKH(txtMa.getText());
+            kh.setTenKH(txtTen.getText());
+            kh.setTuoi(Integer.parseInt(txtTuoi.getText()));
+            if(rdoNam.isSelected()){
+                kh.setGioiTinh(0);
+            }else{
+                kh.setGioiTinh(1);
+            }
+            kh.setSDT(Integer.parseInt(txtSDT.getText()));
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn thêm","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(KhachHangServices.Create(kh)){
+                    JOptionPane.showMessageDialog(this,"Thêm thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Thêm thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMa.getText().isEmpty()){
+            sb.append("Nhập mã khách hàng\n");
+        }
+        if(txtTen.getText().isEmpty()){
+            sb.append("Nhập tên khách hàng\n");
+        }
+        if(txtTuoi.getText().isEmpty()){
+            sb.append("Nhập tuổi khách hàng\n");
+        }
+        if(!rdoNam.isSelected() && !rdoNu.isSelected()){
+            sb.append("Chọn giới tính khách hàng\n");
+        }
+        if(txtSDT.getText().isEmpty()){
+            sb.append("Nhập số điện thoại khách hàng\n");
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            KhachHang kh = new KhachHang();
+            kh.setMaKH(txtMa.getText());
+            kh.setTenKH(txtTen.getText());
+            kh.setTuoi(Integer.parseInt(txtTuoi.getText()));
+            if(rdoNam.isSelected()){
+                kh.setGioiTinh(0);
+            }else{
+                kh.setGioiTinh(1);
+            }
+            kh.setSDT(Integer.parseInt(txtSDT.getText()));
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn sửa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(KhachHangServices.Update(kh)){
+                    JOptionPane.showMessageDialog(this,"Sửa thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Sửa thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMa.getText().isEmpty()){
+            sb.append("Nhập mã khách hàng\n");
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            KhachHang kh = new KhachHang();
+            kh.setMaKH(txtMa.getText());
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn xóa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(KhachHangServices.Delete(kh)){
+                    JOptionPane.showMessageDialog(this,"Xóa thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Xóa thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnTimActionPerformed
+
+    private void tblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKHMouseClicked
+        // TODO add your handling code here:
+        int row = tblKH.getSelectedRow();
+        if(row>-1){
+            String ma = (String) tblKH.getValueAt(row, 0);
+            KhachHang kh = KhachHangServices.getByName(ma);
+            txtMa.setText(kh.getMaKH());
+            txtTen.setText(kh.getTenKH());
+            txtTuoi.setText(String.valueOf(kh.getTuoi()));
+            if(kh.getGioiTinh()==0){
+                rdoNam.setSelected(true);
+            }else{
+                rdoNu.setSelected(true);
+            }
+            txtSDT.setText(String.valueOf(kh.getSDT()));
+        }
+    }//GEN-LAST:event_tblKHMouseClicked
 
     /**
      * @param args the command line arguments
@@ -286,9 +418,9 @@ DefaultTableModel tableModel;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JRadioButton rdoNam;
+    private javax.swing.JRadioButton rdoNu;
     private javax.swing.JTable tblKH;
     private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtSDT;

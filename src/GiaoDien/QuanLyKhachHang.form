@@ -61,9 +61,9 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtTen" alignment="0" min="-2" pref="318" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="jRadioButton1" min="-2" pref="98" max="-2" attributes="0"/>
+                                      <Component id="rdoNam" min="-2" pref="98" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jRadioButton2" min="-2" pref="98" max="-2" attributes="0"/>
+                                      <Component id="rdoNu" min="-2" pref="98" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="txtTuoi" min="-2" pref="318" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
@@ -115,8 +115,8 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoNam" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdoNu" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -185,7 +185,7 @@
         <Property name="text" type="java.lang.String" value="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+    <Component class="javax.swing.JRadioButton" name="rdoNam">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
@@ -193,7 +193,7 @@
         <Property name="text" type="java.lang.String" value="Nam"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+    <Component class="javax.swing.JRadioButton" name="rdoNu">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
@@ -244,6 +244,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblKHMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

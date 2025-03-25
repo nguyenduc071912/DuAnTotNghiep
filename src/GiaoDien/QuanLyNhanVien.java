@@ -9,6 +9,7 @@ package GiaoDien;
 import Mode.NhanVien;
 import Services.NhanVienSevices;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -61,8 +62,8 @@ DefaultTableModel tableModel;
         jLabel7 = new javax.swing.JLabel();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rdoNam = new javax.swing.JRadioButton();
+        rdoNu = new javax.swing.JRadioButton();
         cboVaiTro = new javax.swing.JComboBox<>();
         txtMa = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -81,6 +82,11 @@ DefaultTableModel tableModel;
         jLabel3.setText("Tên");
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Vai trò");
 
@@ -91,14 +97,24 @@ DefaultTableModel tableModel;
         jLabel7.setText("Số điện thoại");
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Nam");
+        buttonGroup1.add(rdoNam);
+        rdoNam.setText("Nam");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Nữ");
+        buttonGroup1.add(rdoNu);
+        rdoNu.setText("Nữ");
 
         cboVaiTro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phục vụ", "Pha chế", "Thu ngân", "Bảo vệ" }));
 
@@ -115,6 +131,11 @@ DefaultTableModel tableModel;
                 "Mã nhân viên", "Tên nhân viên", "Vai trò", "Tuổi", "Số điện thoại", "Giới tính"
             }
         ));
+        tblNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblNVMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblNV);
 
         txtTim.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +145,11 @@ DefaultTableModel tableModel;
         });
 
         btnTim.setText("Tìm kiếm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,6 +175,11 @@ DefaultTableModel tableModel;
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel6)
+                                                    .addComponent(jLabel7))
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jLabel8)
@@ -157,15 +188,8 @@ DefaultTableModel tableModel;
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(38, 38, 38)))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtMa)
-                                                    .addComponent(txtTen)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel6)
-                                                    .addComponent(jLabel7))
-                                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                                .addGap(16, 16, 16)
+                                                .addComponent(txtMa)))))
                                 .addGap(48, 48, 48))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,13 +198,14 @@ DefaultTableModel tableModel;
                                         .addGap(109, 109, 109)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(rdoNam, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(rdoNu, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(txtTuoi, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(cboVaiTro, javax.swing.GroupLayout.Alignment.LEADING, 0, 397, Short.MAX_VALUE)))))
+                                                .addComponent(cboVaiTro, javax.swing.GroupLayout.Alignment.LEADING, 0, 397, Short.MAX_VALUE)
+                                                .addComponent(txtTen, javax.swing.GroupLayout.Alignment.LEADING)))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -233,8 +258,8 @@ DefaultTableModel tableModel;
                                 .addGap(27, 27, 27)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel6)
-                                    .addComponent(jRadioButton1)
-                                    .addComponent(jRadioButton2))
+                                    .addComponent(rdoNam)
+                                    .addComponent(rdoNu))
                                 .addGap(53, 53, 53)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnThem)
@@ -252,6 +277,145 @@ DefaultTableModel tableModel;
     private void txtTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTimActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMa.getText().isEmpty()){
+            sb.append("Nhập mã nhân viên\n");
+        }
+        if(txtTen.getText().isEmpty()){
+            sb.append("Nhập tên nhân viên\n");
+        }
+        if(txtTuoi.getText().isEmpty()){
+            sb.append("Nhập tuổi nhân viên\n");
+        }
+        if(txtSDT.getText().isEmpty()){
+            sb.append("Nhập số điện thoại khách hàng\n");
+        }
+        if(!rdoNam.isSelected() && !rdoNu.isSelected()){
+            sb.append("Chọn giới tính nhân viên\n");
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            NhanVien nv = new NhanVien();
+            nv.setMaNV(txtMa.getText());
+            nv.setHoTenNV(txtTen.getText());
+            nv.setVaiTro(cboVaiTro.getSelectedItem().toString());
+            nv.setTuoi(Integer.parseInt(txtTuoi.getText()));
+            nv.setSDT(Integer.parseInt(txtSDT.getText()));
+            if(rdoNam.isSelected()){
+                nv.setGioiTinh(0);
+            }else{
+                nv.setGioiTinh(1);
+            }
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn thêm","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(NhanVienSevices.Create(nv)){
+                    JOptionPane.showMessageDialog(this,"Thêm thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Thêm thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMa.getText().isEmpty()){
+            sb.append("Nhập mã nhân viên\n");
+        }
+        if(txtTen.getText().isEmpty()){
+            sb.append("Nhập tên nhân viên\n");
+        }
+        if(txtTuoi.getText().isEmpty()){
+            sb.append("Nhập tuổi nhân viên\n");
+        }
+        if(txtSDT.getText().isEmpty()){
+            sb.append("Nhập số điện thoại khách hàng\n");
+        }
+        if(!rdoNam.isSelected() && !rdoNu.isSelected()){
+            sb.append("Chọn giới tính nhân viên\n");
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            NhanVien nv = new NhanVien();
+            nv.setMaNV(txtMa.getText());
+            nv.setHoTenNV(txtTen.getText());
+            nv.setVaiTro(cboVaiTro.getSelectedItem().toString());
+            nv.setTuoi(Integer.parseInt(txtTuoi.getText()));
+            nv.setSDT(Integer.parseInt(txtSDT.getText()));
+            if(rdoNam.isSelected()){
+                nv.setGioiTinh(0);
+            }else{
+                nv.setGioiTinh(1);
+            }
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn sửa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(NhanVienSevices.Update(nv)){
+                    JOptionPane.showMessageDialog(this,"Sửa thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Sửa thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMa.getText().isEmpty()){
+            sb.append("Nhập mã nhân viên\n");
+        }
+        try {
+            NhanVien nv = new NhanVien();
+            nv.setMaNV(txtMa.getText());
+            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn xóa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
+            if(chose == JOptionPane.YES_OPTION){
+                if(NhanVienSevices.Delete(nv)){
+                    JOptionPane.showMessageDialog(this,"Xóa thành công");
+                    loadData();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Xóa thất bại");
+                }
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTimActionPerformed
+
+    private void tblNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNVMouseClicked
+        // TODO add your handling code here:
+        int row = tblNV.getSelectedRow();
+        if(row>-1){
+            String ma = (String) tblNV.getValueAt(row, 0);
+            NhanVien nv = NhanVienSevices.getByName(ma);
+            txtMa.setText(nv.getMaNV());
+            txtTen.setText(nv.getHoTenNV());
+            cboVaiTro.setSelectedItem(nv.getVaiTro());
+            txtTuoi.setText(String.valueOf(nv.getTuoi()));
+            txtSDT.setText(String.valueOf(nv.getSDT()));
+            if(nv.getGioiTinh()==0){
+                rdoNam.setSelected(true);
+            }else{
+                rdoNu.setSelected(true);
+            }
+        }
+    }//GEN-LAST:event_tblNVMouseClicked
 
     /**
      * @param args the command line arguments
@@ -305,9 +469,9 @@ DefaultTableModel tableModel;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JRadioButton rdoNam;
+    private javax.swing.JRadioButton rdoNu;
     private javax.swing.JTable tblNV;
     private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtSDT;
