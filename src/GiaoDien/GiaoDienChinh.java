@@ -4,7 +4,9 @@
  */
 package GiaoDien;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,11 +21,11 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         initComponents();
         init();
     }
-    
-    void init(){
+
+    void init() {
         setSize(1000, 600);
         setLocationRelativeTo(null);
-        
+
         new LoadForm(this, true).setVisible(true);
         new DangNhap(this, true).setVisible(true);
     }
@@ -73,6 +75,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jToolBar1.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar1.setRollover(true);
 
         btnNhanVien.setText("Nhân viên");
@@ -159,7 +162,8 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jToolBar1.add(btnDoiMatKhau);
 
-        jPanel1.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setText("jLabel1");
 
@@ -168,7 +172,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(957, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -293,10 +297,8 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(TabGDC, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
-                .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,8 +328,16 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Nhân Viên")) {
+                JOptionPane.showMessageDialog(null, "Tab Nhân Viên đã tồn tại!");
+                return;
+            }
+        }
         QuanLyNhanVien qlnv = new QuanLyNhanVien();
-        qlnv.setVisible(true);
+        JPanel panel = new JPanel();
+        panel.add(qlnv.getContentPane());
+        TabGDC.addTab("Nhân Viên", panel);
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
