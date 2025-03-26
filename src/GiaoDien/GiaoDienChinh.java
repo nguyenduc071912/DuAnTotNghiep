@@ -45,6 +45,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btnNhanVien = new javax.swing.JButton();
         btnSanPham = new javax.swing.JButton();
+        btnKho = new javax.swing.JButton();
         btnKhachHang = new javax.swing.JButton();
         btnDonHang = new javax.swing.JButton();
         btnHoaDon = new javax.swing.JButton();
@@ -63,6 +64,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         mniQLNV = new javax.swing.JMenuItem();
         mniQLSP = new javax.swing.JMenuItem();
+        mniKho = new javax.swing.JMenuItem();
         mniQLKH = new javax.swing.JMenuItem();
         mniQLDH = new javax.swing.JMenuItem();
         mniQLHD = new javax.swing.JMenuItem();
@@ -99,6 +101,17 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btnSanPham);
+
+        btnKho.setText("Kho");
+        btnKho.setFocusable(false);
+        btnKho.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnKho.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnKho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnKho);
 
         btnKhachHang.setText("Khách hàng");
         btnKhachHang.setFocusable(false);
@@ -246,6 +259,15 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
         jMenu2.add(mniQLSP);
+
+        mniKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Safe.png"))); // NOI18N
+        mniKho.setText("Kho");
+        mniKho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniKhoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mniKho);
 
         mniQLKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Boy.png"))); // NOI18N
         mniQLKH.setText("Quản lý khách hàng");
@@ -579,6 +601,34 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         TabGDC.addTab("Hóa đơn chi tiết", panel);
     }//GEN-LAST:event_mniHDCTActionPerformed
 
+    private void mniKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniKhoActionPerformed
+        // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Kho")) {
+                JOptionPane.showMessageDialog(null, "Tab kho đã tồn tại!");
+                return;
+            }
+        }
+        QuanLyKho k = new QuanLyKho();
+        JPanel panel = new JPanel();
+        panel.add(k.getContentPane());
+        TabGDC.addTab("Kho", panel);
+    }//GEN-LAST:event_mniKhoActionPerformed
+
+    private void btnKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoActionPerformed
+        // TODO add your handling code here:
+        for (int i = 0; i < TabGDC.getTabCount(); i++) {
+            if (TabGDC.getTitleAt(i).equals("Kho")) {
+                JOptionPane.showMessageDialog(null, "Tab kho đã tồn tại!");
+                return;
+            }
+        }
+        QuanLyKho k = new QuanLyKho();
+        JPanel panel = new JPanel();
+        panel.add(k.getContentPane());
+        TabGDC.addTab("Kho", panel);
+    }//GEN-LAST:event_btnKhoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -622,6 +672,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     private javax.swing.JButton btnHDCT;
     private javax.swing.JButton btnHoaDon;
     private javax.swing.JButton btnKhachHang;
+    private javax.swing.JButton btnKho;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnSanPham;
     private javax.swing.JButton btnTongHopThongKe;
@@ -642,6 +693,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniDoiMatKhau;
     private javax.swing.JMenuItem mniGioiThieu;
     private javax.swing.JMenuItem mniHDCT;
+    private javax.swing.JMenuItem mniKho;
     private javax.swing.JMenuItem mniQLDH;
     private javax.swing.JMenuItem mniQLHD;
     private javax.swing.JMenuItem mniQLKH;
