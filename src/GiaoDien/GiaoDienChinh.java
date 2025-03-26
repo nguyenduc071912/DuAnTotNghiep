@@ -361,10 +361,11 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Giới thiệu")) {
-                JOptionPane.showMessageDialog(null, "Tab giới thiệu đã tồn tại!");
+                TabGDC.setSelectedIndex(i); // Chuyển ngay đến tab đã có
                 return;
             }
         }
+
         GioiThieu gt = new GioiThieu();
         JPanel panel = new JPanel();
         panel.add(gt.getContentPane());
@@ -375,7 +376,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Sản phẩm")) {
-                JOptionPane.showMessageDialog(null, "Tab sản phẩm đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -389,7 +390,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Nhân viên")) {
-                JOptionPane.showMessageDialog(null, "Tab nhân viên đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -403,7 +404,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Khách hàng")) {
-                JOptionPane.showMessageDialog(null, "Tab khách hàng đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -417,7 +418,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Đơn hàng")) {
-                JOptionPane.showMessageDialog(null, "Tab đơn hàng đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -431,7 +432,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Hóa đơn")) {
-                JOptionPane.showMessageDialog(null, "Tab hóa đơn đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -445,7 +446,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Tổng hợp - thống kê")) {
-                JOptionPane.showMessageDialog(null, "Tab tổng hợp - thống kê đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -479,7 +480,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Khách hàng")) {
-                JOptionPane.showMessageDialog(null, "Tab khách hàng đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -493,7 +494,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Nhân viên")) {
-                JOptionPane.showMessageDialog(null, "Tab nhân viên đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -507,7 +508,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Sản phẩm")) {
-                JOptionPane.showMessageDialog(null, "Tab sản phẩm đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -521,7 +522,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Đơn hàng")) {
-                JOptionPane.showMessageDialog(null, "Tab đơn hàng đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -535,7 +536,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Hóa đơn")) {
-                JOptionPane.showMessageDialog(null, "Tab hóa đơn đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -549,7 +550,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Tổng hợp - thống kê")) {
-                JOptionPane.showMessageDialog(null, "Tab tổng hợp - thống kê đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -563,7 +564,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Giới thiệu")) {
-                JOptionPane.showMessageDialog(null, "Tab giới thiệu đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -577,7 +578,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Hóa đơn chi tiết")) {
-                JOptionPane.showMessageDialog(null, "Tab hóa đơn chi tiết đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -591,7 +592,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Hóa đơn chi tiết")) {
-                JOptionPane.showMessageDialog(null, "Tab hóa đơn chi tiết đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -605,7 +606,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Kho")) {
-                JOptionPane.showMessageDialog(null, "Tab kho đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
@@ -619,7 +620,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < TabGDC.getTabCount(); i++) {
             if (TabGDC.getTitleAt(i).equals("Kho")) {
-                JOptionPane.showMessageDialog(null, "Tab kho đã tồn tại!");
+                TabGDC.setSelectedIndex(i);
                 return;
             }
         }
