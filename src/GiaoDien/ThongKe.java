@@ -3,20 +3,94 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GiaoDien;
-
+import Mode.DoanhThu;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Administrator
  */
 public class ThongKe extends javax.swing.JFrame {
-
+    static String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=DATN_PRO230;user=sa;password=123;trustServerCertificate=true";
+    DefaultTableModel tblModel;
     /**
      * Creates new form ThongKe
      */
     public ThongKe() {
         initComponents();
+        initTable();
+        LoadData();
     }
-
+    
+    public List<DoanhThu> getAll(int nam) {
+        String sql = "EXEC ThongKeDoanhThuTheoNam @Nam = ?";
+        try(Connection conn = DriverManager.getConnection(connectionUrl); PreparedStatement ps = conn.prepareStatement(sql);) {
+            ps.setInt(1, nam);
+            List<DoanhThu> dtlist = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {                
+                DoanhThu dt = new DoanhThu();
+                dt.setThang(rs.getString("Thang"));
+                dt.setSanPham(rs.getString("LoaiSanPham"));
+                dt.setSoLuong(rs.getInt("SoLuongDonHang"));
+                dt.setTongTien(rs.getString("TongTienBanRa"));
+                dtlist.add(dt);
+            }
+            return dtlist;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public void cboNam(int nam){
+        List<DoanhThu> dtlist = getAll(nam);
+        tblModel.setNumRows(0);
+        for (DoanhThu dt : dtlist) {
+            tblModel.addRow(new Object[]{dt.getThang(),dt.getSanPham(),dt.getSoLuong(),dt.getTongTien()});
+        }
+    }
+    
+    public List<DoanhThu> getAll2025() {
+        String sql = "EXEC ThongKeDoanhThuTheoNam @Nam = 2025";
+        try(Connection conn = DriverManager.getConnection(connectionUrl); PreparedStatement ps = conn.prepareStatement(sql);) {
+            List<DoanhThu> dtlist = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {                
+                DoanhThu dt = new DoanhThu();
+                dt.setThang(rs.getString("Thang"));
+                dt.setSanPham(rs.getString("LoaiSanPham"));
+                dt.setSoLuong(rs.getInt("SoLuongDonHang"));
+                dt.setTongTien(rs.getString("TongTienBanRa"));
+                dtlist.add(dt);
+            }
+            return dtlist;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public void initTable(){
+        tblModel = new DefaultTableModel();
+        tblModel.setColumnIdentifiers(new String[]{"Tháng","Loại sản phẩm","Số lượng đơn","Tổng tiền bán ra"});
+        tblThongKeDoanhThu.setModel(tblModel);
+    }
+    
+    public void LoadData(){
+        List<DoanhThu> dtlist = getAll2025();
+        tblModel.setNumRows(0);
+        for (DoanhThu dt : dtlist) {
+            tblModel.addRow(new Object[]{dt.getThang(),dt.getSanPham(),dt.getSoLuong(),dt.getTongTien()});
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,7 +124,13 @@ public class ThongKe extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(tblThongKeDoanhThu);
 
-        cboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm 2024", "Năm 2025", "Năm 2026" }));
+        cboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2024", "2025", "2026" }));
+        cboNam.setSelectedIndex(1);
+        cboNam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNamActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,6 +156,13 @@ public class ThongKe extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cboNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamActionPerformed
+        // TODO add your handling code here:
+        String namStr = (String) cboNam.getSelectedItem();
+        int nam = Integer.parseInt(namStr);
+        cboNam(nam);
+    }//GEN-LAST:event_cboNamActionPerformed
 
     /**
      * @param args the command line arguments
