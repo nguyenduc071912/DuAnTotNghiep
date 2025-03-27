@@ -36,7 +36,7 @@ public class ThongKe extends javax.swing.JFrame {
             while (rs.next()) {                
                 DoanhThu dt = new DoanhThu();
                 dt.setThang(rs.getString("Thang"));
-                dt.setSanPham(rs.getString("LoaiSanPham"));
+                dt.setSanPham(rs.getString("TenSanPham"));
                 dt.setSoLuong(rs.getInt("SoLuongDonHang"));
                 dt.setTongTien(rs.getString("TongTienBanRa"));
                 dtlist.add(dt);
@@ -64,7 +64,7 @@ public class ThongKe extends javax.swing.JFrame {
             while (rs.next()) {                
                 DoanhThu dt = new DoanhThu();
                 dt.setThang(rs.getString("Thang"));
-                dt.setSanPham(rs.getString("LoaiSanPham"));
+                dt.setSanPham(rs.getString("TenSanPham"));
                 dt.setSoLuong(rs.getInt("SoLuongDonHang"));
                 dt.setTongTien(rs.getString("TongTienBanRa"));
                 dtlist.add(dt);
@@ -78,7 +78,7 @@ public class ThongKe extends javax.swing.JFrame {
     
     public void initTable(){
         tblModel = new DefaultTableModel();
-        tblModel.setColumnIdentifiers(new String[]{"Tháng","Loại sản phẩm","Số lượng đơn","Tổng tiền bán ra"});
+        tblModel.setColumnIdentifiers(new String[]{"Tháng","Tên sản phẩm","Số lượng đơn","Tổng tiền bán ra"});
         tblThongKeDoanhThu.setModel(tblModel);
     }
     
@@ -119,7 +119,7 @@ public class ThongKe extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Tháng", "Chi tiết sản phẩm", "Số lượng đơn hàng", "Tổng tiền bán ra"
+                "Tháng", "Tên sản phẩm", "Số lượng đơn hàng", "Tổng tiền bán ra"
             }
         ));
         jScrollPane5.setViewportView(tblThongKeDoanhThu);
