@@ -37,4 +37,26 @@ public class HoaDonChiTietServices {
         }
         return null;
     }
+    
+    public static List<HoaDonChiTiet> getById(String MaHDCT) {
+        String sql = "select * from HoaDonChiTiet where MaHDCT = ?";
+        HoaDonChiTiet hdct = new HoaDonChiTiet();
+        try(Connection conn = DriverManager.getConnection(connectionUrl); PreparedStatement ps = conn.prepareStatement(sql);) {
+            ps.setString(1, MaHDCT);
+            List<HoaDonChiTiet> hdctlist = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                hdct.setMaHDCT(rs.getString("MaHDCT"));
+                hdct.setMaHD(rs.getString("MaHD"));
+                hdct.setMaSP(rs.getString("MaSP"));
+                hdct.setSoLuongMua(rs.getInt("SoLuongMua"));
+                hdct.setTongTienThanhToan(rs.getFloat("TongTienThanhToan"));
+                hdctlist.add(hdct);
+            }
+            return hdctlist;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

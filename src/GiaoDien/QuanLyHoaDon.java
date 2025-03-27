@@ -7,6 +7,7 @@ package GiaoDien;
 import Mode.HoaDon;
 import Services.HoaDonServices;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,7 +35,7 @@ public class QuanLyHoaDon extends javax.swing.JFrame {
         List<HoaDon> hdlist = HoaDonServices.getAll();
         tblModel.setNumRows(0);
         for (HoaDon hd : hdlist) {
-            tblModel.addRow(new Object[]{hd.getMaHD(),hd.getMaNV(),hd.getMaDH(),hd.getNgayLapHD(),hd.getGiaTien() + " Đồng"});
+            tblModel.addRow(new Object[]{hd.getMaHD(),hd.getMaNV(),hd.getMaDH(),hd.getNgayLapHD(),hd.getGiaTien() + " VNĐ"});
         }
     }
 
@@ -73,6 +74,11 @@ public class QuanLyHoaDon extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tblHD);
 
         btnTim.setText("Tìm kiếm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +116,24 @@ public class QuanLyHoaDon extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+        String MaHD = txtTim.getText().trim();
+        if (MaHD.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập mã hóa đơn!");
+            return;
+        }
+        List<HoaDon> hdList = (List<HoaDon>) HoaDonServices.getById(MaHD);
+        if (hdList != null) {
+            tblModel.setNumRows(0);
+                for (HoaDon hd : hdList) {
+                    tblModel.addRow(new Object[]{hd.getMaHD(),hd.getMaNV(),hd.getMaDH(),hd.getNgayLapHD(),hd.getGiaTien() + " VNĐ"});
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Không tìm thấy khách hàng với mã: " + MaHD);
+        }
+    }//GEN-LAST:event_btnTimActionPerformed
 
     /**
      * @param args the command line arguments

@@ -34,7 +34,7 @@ DefaultTableModel tableModel;
         List<SanPham> spList = SanPhamServices.getAll();
         tableModel.setNumRows(0);
         for(SanPham sp: spList){
-            tableModel.addRow(new Object[]{sp.getMaSP(),sp.getMaNL(),sp.getTenSP(),sp.getGiaTien(),sp.getLoaiSP(),sp.getMoTa()});
+            tableModel.addRow(new Object[]{sp.getMaSP(),sp.getMaNL(),sp.getTenSP(),sp.getGiaTien()+" VNĐ",sp.getLoaiSP(),sp.getMoTa()});
         }
     }
 
@@ -362,7 +362,7 @@ DefaultTableModel tableModel;
         if (spList != null) {
             tableModel.setNumRows(0);
             for(SanPham sp: spList){
-                tableModel.addRow(new Object[]{sp.getMaSP(),sp.getMaNL(),sp.getTenSP(),sp.getGiaTien(),sp.getLoaiSP(),sp.getMoTa()});
+                tableModel.addRow(new Object[]{sp.getMaSP(),sp.getMaNL(),sp.getTenSP(),sp.getGiaTien()+" VNĐ",sp.getLoaiSP(),sp.getMoTa()});
             }
         } else {
             JOptionPane.showMessageDialog(null, "Không tìm thấy sản phẩm với mã: " + MaSP);

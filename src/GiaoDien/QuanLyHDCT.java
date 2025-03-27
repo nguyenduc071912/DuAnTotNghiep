@@ -9,6 +9,7 @@ import Mode.HoaDonChiTiet;
 import Services.HoaDonChiTietServices;
 import Services.HoaDonServices;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,7 +37,7 @@ public class QuanLyHDCT extends javax.swing.JFrame {
         List<HoaDonChiTiet> hdlist = HoaDonChiTietServices.getAll();
         tblModel.setNumRows(0);
         for (HoaDonChiTiet hdct : hdlist) {
-            tblModel.addRow(new Object[]{hdct.getMaHDCT(),hdct.getMaHD(),hdct.getMaSP(),hdct.getSoLuongMua(),hdct.getTongTienThanhToan()+ " Đồng"});
+            tblModel.addRow(new Object[]{hdct.getMaHDCT(),hdct.getMaHD(),hdct.getMaSP(),hdct.getSoLuongMua(),hdct.getTongTienThanhToan()+ " VNĐ"});
         }
     }
 
@@ -75,6 +76,11 @@ public class QuanLyHDCT extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tblHDCT);
 
         btnTimKiem.setText("Tìm kiếm");
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +116,24 @@ public class QuanLyHDCT extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        // TODO add your handling code here:
+        String MaHDCT = txtTimkiem.getText().trim();
+        if (MaHDCT.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập mã mã hóa đơn chi tiết!");
+            return;
+        }
+        List<HoaDonChiTiet> hdctList = (List<HoaDonChiTiet>) HoaDonChiTietServices.getById(MaHDCT);
+        if (hdctList != null) {
+            tblModel.setNumRows(0);
+            for (HoaDonChiTiet hdct : hdctList) {
+                tblModel.addRow(new Object[]{hdct.getMaHDCT(),hdct.getMaHD(),hdct.getMaSP(),hdct.getSoLuongMua(),hdct.getTongTienThanhToan()+ " VNĐ"});
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Không tìm thấy hóa đơn chi tiết với mã: " + MaHDCT);
+        }
+    }//GEN-LAST:event_btnTimKiemActionPerformed
 
     /**
      * @param args the command line arguments

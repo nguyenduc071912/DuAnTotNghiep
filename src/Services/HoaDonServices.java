@@ -37,4 +37,26 @@ public class HoaDonServices {
         }
         return null;
     }
+    
+    public static List<HoaDon> getById(String MaHD) {
+        String sql = "select * from HoaDon where MaHD = ?";
+        HoaDon hd = new HoaDon();
+        try(Connection conn = DriverManager.getConnection(connectionUrl); PreparedStatement ps = conn.prepareStatement(sql);) {
+            ps.setString(1, MaHD);
+            List<HoaDon> hdlist = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                hd.setMaHD(rs.getString("MaHD"));
+                hd.setMaNV(rs.getString("MaNV"));
+                hd.setMaDH(rs.getString("MaDH"));
+                hd.setNgayLapHD(rs.getString("NgayLapHD"));
+                hd.setGiaTien(rs.getFloat("GiaTien"));
+                hdlist.add(hd);
+            }
+            return hdlist;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
