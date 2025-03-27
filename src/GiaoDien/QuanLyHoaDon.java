@@ -4,17 +4,38 @@
  */
 package GiaoDien;
 
+import Mode.HoaDon;
+import Services.HoaDonServices;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Administrator
  */
 public class QuanLyHoaDon extends javax.swing.JFrame {
-
+    DefaultTableModel tblModel;
     /**
      * Creates new form QuanLyHoaDon
      */
     public QuanLyHoaDon() {
         initComponents();
+        initTable();
+        loadData();
+    }
+    
+    public void initTable(){
+        tblModel = new DefaultTableModel();
+        tblModel.setColumnIdentifiers(new String[]{"Mã hóa đơn","Tên nhân viên","Mã đơn hàng","Ngày lập hóa đơn","Giá tiền"});
+        tblHD.setModel(tblModel);
+    }
+    
+    public void loadData(){
+        List<HoaDon> hdlist = HoaDonServices.getAll();
+        tblModel.setNumRows(0);
+        for (HoaDon hd : hdlist) {
+            tblModel.addRow(new Object[]{hd.getMaHD(),hd.getMaNV(),hd.getMaDH(),hd.getNgayLapHD(),hd.getGiaTien() + " Đồng"});
+        }
     }
 
     /**

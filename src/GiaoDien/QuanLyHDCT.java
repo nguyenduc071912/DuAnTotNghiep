@@ -4,17 +4,40 @@
  */
 package GiaoDien;
 
+import Mode.HoaDon;
+import Mode.HoaDonChiTiet;
+import Services.HoaDonChiTietServices;
+import Services.HoaDonServices;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Administrator
  */
 public class QuanLyHDCT extends javax.swing.JFrame {
-
+    DefaultTableModel tblModel;
     /**
      * Creates new form QuanLyHDCT
      */
     public QuanLyHDCT() {
         initComponents();
+        initTable();
+        loadData();
+    }
+    
+    public void initTable(){
+        tblModel = new DefaultTableModel();
+        tblModel.setColumnIdentifiers(new String[]{"Mã hóa đơn chi tiết","Mã hóa đơn","Tên sản phẩm","Số lượng mua","Tổng tiền thanh toán"});
+        tblHDCT.setModel(tblModel);
+    }
+    
+    public void loadData(){
+        List<HoaDonChiTiet> hdlist = HoaDonChiTietServices.getAll();
+        tblModel.setNumRows(0);
+        for (HoaDonChiTiet hdct : hdlist) {
+            tblModel.addRow(new Object[]{hdct.getMaHDCT(),hdct.getMaHD(),hdct.getMaSP(),hdct.getSoLuongMua(),hdct.getTongTienThanhToan()+ " Đồng"});
+        }
     }
 
     /**
