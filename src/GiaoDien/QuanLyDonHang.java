@@ -311,6 +311,20 @@ public class QuanLyDonHang extends javax.swing.JFrame {
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
+        String MaDH = txtTim.getText().trim();
+        if (MaDH.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập mã đơn hàng!");
+            return;
+        }
+        List<DonHang> dhList = (List<DonHang>) DonHangServices.getById(MaDH);
+        if (dhList != null) {
+            tblModel.setNumRows(0);
+            for (DonHang dh : dhList) {
+                tblModel.addRow(new Object[]{dh.getMaDH(),dh.getMaNV(),dh.getMaKH(),dh.getMaSP(),dh.getSize(),dh.getSoLuong(),dh.getNgayDatHang(),dh.getHinhThucThanhToan(),dh.getTongTien()});
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Không tìm thấy nguyên liệu với mã: " + MaDH);
+        }
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed

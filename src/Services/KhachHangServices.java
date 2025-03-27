@@ -40,6 +40,28 @@ public class KhachHangServices {
         return null;
     }
     
+    public static List<KhachHang> getById(String MaKH){
+        String sql = "select MaKH, TenKH,Tuoi, GioiTinh,SDT from KhachHang where MaKH = ?";
+        KhachHang kh = new KhachHang();
+        try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){
+            stm.setString(1,MaKH);
+            List<KhachHang> khList = new ArrayList<>();
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                kh.setMaKH(rs.getString("MaKH"));
+                kh.setTenKH(rs.getString("TenKH"));
+                kh.setTuoi(rs.getInt("Tuoi"));
+                kh.setGioiTinh(rs.getInt("GioiTinh"));
+                kh.setSDT(rs.getInt("SDT"));
+                khList.add(kh);
+            }
+            return khList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public static KhachHang getByName(String MaKH){
         String sql = "select MaKH, TenKH,Tuoi, GioiTinh,SDT from KhachHang where MaKH = ?";
         KhachHang kh = new KhachHang();

@@ -353,6 +353,20 @@ DefaultTableModel tableModel;
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
+        String MaSP = txtTim.getText().trim();
+        if (MaSP.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập mã sản phảm!");
+            return;
+        }
+        List<SanPham> spList = (List<SanPham>) SanPhamServices.getById(MaSP);
+        if (spList != null) {
+            tableModel.setNumRows(0);
+            for(SanPham sp: spList){
+                tableModel.addRow(new Object[]{sp.getMaSP(),sp.getMaNL(),sp.getTenSP(),sp.getGiaTien(),sp.getLoaiSP(),sp.getMoTa()});
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Không tìm thấy sản phẩm với mã: " + MaSP);
+        }
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void tblSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSPMouseClicked

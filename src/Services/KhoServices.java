@@ -59,6 +59,27 @@ public class KhoServices {
         return null;
     }
     
+    public static List<Kho> getById(String MaNL){
+        String sql = "select * from Kho where MaNL = ?";
+        Kho k = new Kho();
+        try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){
+            stm.setString(1,MaNL);
+            List<Kho> kList = new ArrayList<>();
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                k.setMaNL(rs.getString("MaNL"));
+                k.setTenNL(rs.getString("TenNL"));
+                k.setSoLuong(rs.getFloat("SoLuong"));
+                k.setDonVi(rs.getString("DonVi"));
+                kList.add(k);
+            }
+            return kList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public static boolean Create(Kho k){
         String sql = "insert into Kho(MaNL,TenNL,SoLuong,DonVi) values(?,?,?,?)";
         try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){

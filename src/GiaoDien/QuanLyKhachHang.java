@@ -350,7 +350,20 @@ DefaultTableModel tableModel;
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
-        
+        String MaKH = txtTim.getText().trim();
+        if (MaKH.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập mã khách hàng!");
+            return;
+        }
+        List<KhachHang> khList = (List<KhachHang>) KhachHangServices.getById(MaKH);
+        if (khList != null) {
+            tableModel.setNumRows(0);
+            for(KhachHang kh: khList){
+                tableModel.addRow(new Object[]{kh.getMaKH(),kh.getTenKH(),kh.getTuoi(),kh.getGioiTinh() == 0 ? "Nam":"Nữ",kh.getSDT()});
+        }
+        } else {
+            JOptionPane.showMessageDialog(null, "Không tìm thấy khách hàng với mã: " + MaKH);
+        }
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void tblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKHMouseClicked

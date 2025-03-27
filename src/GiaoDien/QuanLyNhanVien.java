@@ -396,6 +396,20 @@ DefaultTableModel tableModel;
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
+        String MaNV = txtTim.getText().trim();
+        if (MaNV.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập mã nhân viên!");
+            return;
+        }
+        List<NhanVien> nvList = (List<NhanVien>) NhanVienSevices.getById(MaNV);
+        if (nvList != null) {
+            tableModel.setNumRows(0);
+            for(NhanVien nv: nvList){
+                tableModel.addRow(new Object[]{nv.getMaNV(),nv.getHoTenNV(),nv.getVaiTro(),nv.getTuoi(),nv.getSDT(),nv.getGioiTinh() == 0 ? "Nam":"Nữ"});
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Không tìm thấy nhân viên với mã: " + MaNV);
+        }
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void tblNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNVMouseClicked

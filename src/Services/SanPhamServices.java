@@ -64,6 +64,29 @@ public class SanPhamServices {
         return null;
     }
     
+    public static List<SanPham> getById(String MaSP){
+        String sql = "select MaSP,MaNL,TenSP,GiaTien,LoaiSP,MoTa from SanPham where MaSP = ?";
+        SanPham sp = new SanPham();
+        try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){
+            stm.setString(1,MaSP);
+            List<SanPham> spList = new ArrayList<>();
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                sp.setMaSP(rs.getString("MaSP"));
+                sp.setMaNL(rs.getString("MaNL"));
+                sp.setTenSP(rs.getString("TenSP"));
+                sp.setGiaTien(rs.getFloat("GiaTien"));
+                sp.setLoaiSP(rs.getString("LoaiSP"));
+                sp.setMoTa(rs.getString("MoTa"));
+                spList.add(sp);
+            }
+            return spList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public static boolean Create(SanPham sp){
         String sql = "insert into SanPham(MaSP,MaNL,TenSP,GiaTien,LoaiSP,MoTa)VALUES(?,?,?,?,?,?)";
         try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){

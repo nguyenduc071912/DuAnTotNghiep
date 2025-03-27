@@ -213,6 +213,20 @@ public class QuanLyKho extends javax.swing.JFrame {
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
+        String MaNL = txtTim.getText().trim();
+        if (MaNL.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập mã nguyên liệu!");
+            return;
+        }
+        List<Kho> kList = (List<Kho>) KhoServices.getById(MaNL);
+        if (kList != null) {
+            tableModel.setNumRows(0);
+            for(Kho k: kList){
+                tableModel.addRow(new Object[]{k.getMaNL(),k.getTenNL(),k.getSoLuong(),k.getDonVi()});
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Không tìm thấy nguyên liệu với mã: " + MaNL);
+        }
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void txtDonViActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDonViActionPerformed

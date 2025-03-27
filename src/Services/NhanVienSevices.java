@@ -63,6 +63,29 @@ public class NhanVienSevices {
         return null;
     }
     
+    public static List<NhanVien> getById(String MaNV){
+        String sql = "select MaNV, HoTenNV, VaiTro,Tuoi, SDT, GioiTinh from NhanVien where MaNV = ?";
+        NhanVien nv = new NhanVien();
+        try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){
+            stm.setString(1,MaNV);
+            List<NhanVien> nvList = new ArrayList<>();
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                nv.setMaNV(rs.getString("MaNV"));
+                nv.setHoTenNV(rs.getString("HoTenNV"));
+                nv.setVaiTro(rs.getString("VaiTro"));
+                nv.setTuoi(rs.getInt("Tuoi"));
+                nv.setGioiTinh(rs.getInt("GioiTinh"));
+                nv.setSDT(rs.getInt("SDT"));
+                nvList.add(nv);
+            }
+            return nvList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public static boolean Create(NhanVien nv){
         String sql = "insert into NhanVien(MaNV,HoTenNV,VaiTro,Tuoi,SDT,GioiTinh) values(?,?,?,?,?,?)";
         try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){

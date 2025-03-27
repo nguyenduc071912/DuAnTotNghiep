@@ -110,4 +110,30 @@ public class DonHangServices {
         }
         return null;
     }
+    
+    public static List<DonHang> getById(String MaDH){
+        String sql = "select * from DonHang where MaDH = ?";
+        DonHang dh = new DonHang();
+        try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setString(1,MaDH);
+            List<DonHang> dhList = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                dh.setMaDH(rs.getString("MaDH"));
+                dh.setMaNV(rs.getString("MaNV"));
+                dh.setMaKH(rs.getString("MaKH"));
+                dh.setMaSP(rs.getString("MaSP"));
+                dh.setSize(rs.getString("Size"));
+                dh.setSoLuong(rs.getInt("SoLuong"));
+                dh.setNgayDatHang(rs.getString("NgayDatHang"));
+                dh.setHinhThucThanhToan(rs.getString("HinhThucThanhToan"));
+                dh.setTongTien(rs.getInt("TongTien"));
+                dhList.add(dh);
+            }
+            return dhList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
