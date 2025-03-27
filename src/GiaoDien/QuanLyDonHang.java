@@ -92,8 +92,18 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Ngày tạo đơn");
 
@@ -130,6 +140,11 @@ public class QuanLyDonHang extends javax.swing.JFrame {
                 "Mã đơn hàng", "Tên nhân viên", "Tên khách hàng", "Tên sản phẩm", "Size", "Số lượng", "Ngày tạo đơn", "Hình thức", "Tổng tiền"
             }
         ));
+        tblDH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDHMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblDH);
 
         txtTim.addActionListener(new java.awt.event.ActionListener() {
@@ -355,6 +370,81 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_btnThanhToanActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if (txtMaDH.getText().isEmpty()) {
+            sb.append("Vui lòng nhập Mã đơn hàng");
+        }
+        if (txtMaNV.getText().isEmpty()) {
+            sb.append("Vui lòng nhập Mã nhân viên");
+        }
+        if (txtMaKH.getText().isEmpty()) {
+            sb.append("Vui lòng nhập Mã khách hàng");
+        }
+        if (txtMaSP.getText().isEmpty()) {
+            sb.append("Vui lòng nhập Mã sản phẩm");
+        }
+        if (txtSoLuong.getText().isEmpty()) {
+            sb.append("Vui lòng nhập Mã số lượng");
+        }
+        if (txtNgayTaoDon.getText().isEmpty()) {
+            sb.append("Vui lòng nhập Mã ngày tạo đơn");
+        }
+        if (txtTongTien.getText().isEmpty()) {
+            sb.append("Vui lòng nhập Mã tổng tiền");
+        }
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(this, sb.toString(), "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            DonHang dh = new DonHang();
+            dh.setMaDH(txtMaDH.getText());
+            dh.setMaNV(txtMaNV.getText());
+            dh.setMaKH(txtMaKH.getText());
+            dh.setMaSP(txtMaSP.getText());
+            dh.setSize((String) cboSize.getSelectedItem());
+            dh.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
+            dh.setNgayDatHang(txtNgayTaoDon.getText());
+            dh.setHinhThucThanhToan((String) cboHinhThucThanhToan.getSelectedItem());
+            dh.setTongTien(Integer.parseInt(txtTongTien.getText()));
+            int choice = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa ?", "Thông báo", JOptionPane.OK_CANCEL_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                if (DonHangServices.Update(dh)) {
+                    loadData();
+                    JOptionPane.showMessageDialog(this, "Sửa thành công");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Sửa thất bại");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void tblDHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDHMouseClicked
+        // TODO add your handling code here:
+        int row = tblDH.getSelectedRow();
+        if(row>-1){
+            String ma = (String) tblDH.getValueAt(row, 0);
+            DonHang dh = DonHangServices.getByName(ma);
+            txtMaDH.setText(dh.getMaDH());
+            txtMaNV.setText(dh.getMaNV());
+            txtMaKH.setText(dh.getMaKH());
+            txtMaSP.setText(dh.getMaSP());
+            cboSize.setSelectedItem(dh.getSize());
+            txtSoLuong.setText(String.valueOf(dh.getSoLuong()));
+            txtNgayTaoDon.setText(dh.getNgayDatHang());
+            cboHinhThucThanhToan.setSelectedItem(dh.getHinhThucThanhToan());
+            txtTongTien.setText(String.valueOf(dh.getTongTien()));
+        }
+    }//GEN-LAST:event_tblDHMouseClicked
 
     /**
      * @param args the command line arguments
