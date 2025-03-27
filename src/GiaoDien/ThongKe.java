@@ -36,7 +36,7 @@ public class ThongKe extends javax.swing.JFrame {
             while (rs.next()) {                
                 DoanhThu dt = new DoanhThu();
                 dt.setThang(rs.getString("Thang"));
-                dt.setSanPham(rs.getString("TenSP"));
+                dt.setSanPham(rs.getString("TenSanPham"));
                 dt.setSoLuong(rs.getInt("SoLuongDonHang"));
                 dt.setTongTien(rs.getString("TongTienBanRa"));
                 dtlist.add(dt);
@@ -64,7 +64,7 @@ public class ThongKe extends javax.swing.JFrame {
             while (rs.next()) {                
                 DoanhThu dt = new DoanhThu();
                 dt.setThang(rs.getString("Thang"));
-                dt.setSanPham(rs.getString("TenSP"));
+                dt.setSanPham(rs.getString("TenSanPham"));
                 dt.setSoLuong(rs.getInt("SoLuongDonHang"));
                 dt.setTongTien(rs.getString("TongTienBanRa"));
                 dtlist.add(dt);
