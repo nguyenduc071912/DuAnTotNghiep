@@ -26,7 +26,12 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         new LoadForm(this, true).setVisible(true);
-        new DangNhap(this, true).setVisible(true);
+        DangNhap dn = new DangNhap(this, true);
+        dn.setVisible(true);
+
+        if (!dn.isDangNhapThanhCong()) {
+            System.exit(0); // Thoát chương trình nếu người dùng không đăng nhập
+        }
     }
 
     /**

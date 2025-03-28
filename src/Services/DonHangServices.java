@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,10 +40,10 @@ public class DonHangServices {
         }
         return false;
     }
-    
-    public static boolean Update(DonHang dh){
+
+    public static boolean Update(DonHang dh) {
         String sql = "update DonHang set MaNV = ?, MaKH = ?, MaSP = ?, Size = ?, SoLuong = ?, NgayDatHang = ?, HinhThucThanhToan = ?, TongTien = ?  WHERE MaDH = ?";
-        try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement ps = con.prepareStatement(sql)){
+        try (Connection con = DriverManager.getConnection(connectionUrl); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(9, dh.getMaDH());
             ps.setString(1, dh.getMaNV());
             ps.setString(2, dh.getMaKH());
@@ -52,7 +53,7 @@ public class DonHangServices {
             ps.setString(6, dh.getNgayDatHang());
             ps.setString(7, dh.getHinhThucThanhToan());
             ps.setInt(8, dh.getTongTien());
-            return ps.executeUpdate()>0;
+            return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,10 +65,10 @@ public class DonHangServices {
                 + "join NhanVien on NhanVien.MaNV = DonHang.MaNV\n"
                 + "join KhachHang on KhachHang.MaKH = DonHang.MaKH\n"
                 + "join SanPham on SanPham.MaSP = DonHang.MaSP";
-        try(Connection conn = DriverManager.getConnection(connectionUrl); PreparedStatement ps = conn.prepareStatement(sql);) {
+        try (Connection conn = DriverManager.getConnection(connectionUrl); PreparedStatement ps = conn.prepareStatement(sql);) {
             List<DonHang> dhlist = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 DonHang dh = new DonHang();
                 dh.setMaDH(rs.getString("MaDH"));
                 dh.setMaNV(rs.getString("HoTenNV"));
@@ -86,14 +87,14 @@ public class DonHangServices {
         }
         return null;
     }
-    
-    public static DonHang getByName(String MaDH){
+
+    public static DonHang getByName(String MaDH) {
         String sql = "select * from DonHang where MaDH = ?";
         DonHang dh = new DonHang();
-        try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement ps = con.prepareStatement(sql)){
-            ps.setString(1,MaDH);
+        try (Connection con = DriverManager.getConnection(connectionUrl); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, MaDH);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 dh.setMaDH(rs.getString("MaDH"));
                 dh.setMaNV(rs.getString("MaNV"));
                 dh.setMaKH(rs.getString("MaKH"));
@@ -110,15 +111,15 @@ public class DonHangServices {
         }
         return null;
     }
-    
-    public static List<DonHang> getById(String MaDH){
+
+    public static List<DonHang> getById(String MaDH) {
         String sql = "select * from DonHang where MaDH = ?";
         DonHang dh = new DonHang();
-        try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement ps = con.prepareStatement(sql)){
-            ps.setString(1,MaDH);
+        try (Connection con = DriverManager.getConnection(connectionUrl); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, MaDH);
             List<DonHang> dhList = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 dh.setMaDH(rs.getString("MaDH"));
                 dh.setMaNV(rs.getString("MaNV"));
                 dh.setMaKH(rs.getString("MaKH"));
@@ -136,4 +137,26 @@ public class DonHangServices {
         }
         return null;
     }
+
+    public static int getGiaSanPham(String maSP) {
+        int gia = 0;
+        String query = "SELECT GiaTien FROM SanPham WHERE MaSP = ?";
+
+        try (Connection conn = DriverManager.getConnection(connectionUrl); PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, maSP);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                gia = rs.getInt("GiaTien");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return gia;
+    }
+
+    
 }

@@ -24,10 +24,16 @@ public class DangNhap extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-      
+
     }
-    
-    public NguoiDung DangNhap(){
+
+    private boolean isDangNhapThanhCong = false;
+
+    public boolean isDangNhapThanhCong() {
+        return isDangNhapThanhCong;
+    }
+
+    public NguoiDung DangNhap() {
         String url = "jdbc:sqlserver://26.107.57.204:1433;databaseName=DATN_PRO230;user=datn;password=123;trustServerCertificate=true";
         String ten = txtTenTK.getText();
         String mk = new String(txtMK.getPassword());
@@ -41,9 +47,11 @@ public class DangNhap extends javax.swing.JDialog {
             if (rs.next()) {
                 boolean vaitro = rs.getBoolean("VaiTro");
                 if (vaitro) {
+                    isDangNhapThanhCong = true;
                     this.dispose();
                     JOptionPane.showMessageDialog(this, "Chào mừng Nhân viên!");
                 } else {
+                    isDangNhapThanhCong = true;
                     this.dispose();
                     JOptionPane.showMessageDialog(this, "Chào mừng Quản lý!");
                 }
@@ -87,6 +95,7 @@ public class DangNhap extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Mật Khẩu:");
 
+        txtTenTK.setText("Quản lý");
         txtTenTK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTenTKActionPerformed(evt);
@@ -108,6 +117,8 @@ public class DangNhap extends javax.swing.JDialog {
                 btnThoatActionPerformed(evt);
             }
         });
+
+        txtMK.setText("ql123");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,6 +178,7 @@ public class DangNhap extends javax.swing.JDialog {
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
+        isDangNhapThanhCong = false;
         this.dispose();
     }//GEN-LAST:event_btnThoatActionPerformed
 

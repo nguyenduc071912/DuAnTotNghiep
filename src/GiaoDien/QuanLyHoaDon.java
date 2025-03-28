@@ -6,8 +6,11 @@ package GiaoDien;
 
 import Mode.HoaDon;
 import Services.HoaDonServices;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Administrator
  */
 public class QuanLyHoaDon extends javax.swing.JFrame {
+    private Timer timer;
     DefaultTableModel tblModel;
     /**
      * Creates new form QuanLyHoaDon
@@ -23,6 +27,7 @@ public class QuanLyHoaDon extends javax.swing.JFrame {
         initComponents();
         initTable();
         loadData();
+        startAutoRefresh();
     }
     
     public void initTable(){
@@ -37,6 +42,17 @@ public class QuanLyHoaDon extends javax.swing.JFrame {
         for (HoaDon hd : hdlist) {
             tblModel.addRow(new Object[]{hd.getMaHD(),hd.getMaNV(),hd.getMaDH(),hd.getNgayLapHD(),hd.getGiaTien() + " VNĐ"});
         }
+    }
+    
+    public void startAutoRefresh() {
+        timer = new Timer(2000, new ActionListener() {
+        // 2000ms = 2 giây
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadData(); // Gọi phương thức cập nhật bảng
+            }
+        });
+        timer.start(); // Chạy Timer
     }
 
     /**

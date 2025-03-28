@@ -8,8 +8,11 @@ import Mode.HoaDon;
 import Mode.HoaDonChiTiet;
 import Services.HoaDonChiTietServices;
 import Services.HoaDonServices;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Administrator
  */
 public class QuanLyHDCT extends javax.swing.JFrame {
+    private Timer timer;
     DefaultTableModel tblModel;
     /**
      * Creates new form QuanLyHDCT
@@ -25,6 +29,7 @@ public class QuanLyHDCT extends javax.swing.JFrame {
         initComponents();
         initTable();
         loadData();
+        startAutoRefresh();
     }
     
     public void initTable(){
@@ -39,6 +44,16 @@ public class QuanLyHDCT extends javax.swing.JFrame {
         for (HoaDonChiTiet hdct : hdlist) {
             tblModel.addRow(new Object[]{hdct.getMaHDCT(),hdct.getMaHD(),hdct.getMaSP(),hdct.getSoLuongMua(),hdct.getTongTienThanhToan()+ " VNĐ"});
         }
+    }
+    public void startAutoRefresh() {
+        timer = new Timer(2000, new ActionListener() {
+        // 2000ms = 2 giây
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadData(); // Gọi phương thức cập nhật bảng
+            }
+        });
+        timer.start(); // Chạy Timer
     }
 
     /**
