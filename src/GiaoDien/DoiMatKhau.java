@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class DoiMatKhau extends javax.swing.JFrame {
 
-    private static String url = "jdbc:sqlserver://localhost:1433;database=DATN_PRO230;user=sa;password=123;trustServerCertificate=true";
+    private static String url = "jdbc:sqlserver://26.107.57.204:1433;databaseName=DATN_PRO230;user=datn;password=123;trustServerCertificate=true";
 
     /**
      * Creates new form DoiMatKhau

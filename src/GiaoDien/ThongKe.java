@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Administrator
  */
 public class ThongKe extends javax.swing.JFrame {
-    static String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=DATN_PRO230;user=sa;password=123;trustServerCertificate=true";
+    static String connectionUrl = "jdbc:sqlserver://26.107.57.204:1433;databaseName=DATN_PRO230;user=datn;password=123;trustServerCertificate=true";
     DefaultTableModel tblModel;
     /**
      * Creates new form ThongKe

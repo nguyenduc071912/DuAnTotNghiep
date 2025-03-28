@@ -16,7 +16,7 @@ import java.util.List;
  * @author Admin
  */
 public class HoaDonServices {
-    static String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=DATN_PRO230;user=sa;password=123;trustServerCertificate=true";
+    static String connectionUrl = "jdbc:sqlserver://26.107.57.204:1433;databaseName=DATN_PRO230;user=datn;password=123;trustServerCertificate=true";
     public static List<HoaDon> getAll() {
         String sql = "select MaHD,HoTenNV,MaDH,NgayLapHD,GiaTien from HoaDon join NhanVien on NhanVien.MaNV = HoaDon.MaNV";
         try(Connection conn = DriverManager.getConnection(connectionUrl); PreparedStatement ps = conn.prepareStatement(sql);) {

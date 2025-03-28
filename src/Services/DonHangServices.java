@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class DonHangServices {
 
-    static String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=DATN_PRO230;user=sa;password=123;trustServerCertificate=true";
+    static String connectionUrl = "jdbc:sqlserver://26.107.57.204:1433;databaseName=DATN_PRO230;user=datn;password=123;trustServerCertificate=true";
 
     public static boolean Insert(DonHang dh) {
         String sql = "INSERT INTO DonHang (MaDH,MaNV, MaKH, MaSP, Size, SoLuong, NgayDatHang, HinhThucThanhToan, TongTien) VALUES (?,?,?,?,?,?,?,?,?)";

@@ -16,7 +16,7 @@ import java.util.List;
  * @author Admin
  */
 public class HoaDonChiTietServices {
-    static String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=DATN_PRO230;user=sa;password=123;trustServerCertificate=true";
+    static String connectionUrl = "jdbc:sqlserver://26.107.57.204:1433;databaseName=DATN_PRO230;user=datn;password=123;trustServerCertificate=true";
     public static List<HoaDonChiTiet> getAll() {
         String sql = "select MaHDCT, MaHD, TenSP, SoLuongMua, TongTienThanhToan from HoaDonChiTiet join SanPham on SanPham.MaSP = HoaDonChiTiet.MaSP";
         try(Connection conn = DriverManager.getConnection(connectionUrl); PreparedStatement ps = conn.prepareStatement(sql);) {
