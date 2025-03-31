@@ -50,8 +50,8 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btnNhanVien = new javax.swing.JButton();
         btnSanPham = new javax.swing.JButton();
-        btnKho = new javax.swing.JButton();
         btnKhachHang = new javax.swing.JButton();
+        btnKho = new javax.swing.JButton();
         btnDonHang = new javax.swing.JButton();
         btnHoaDon = new javax.swing.JButton();
         btnHDCT = new javax.swing.JButton();
@@ -63,7 +63,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        mniDangNhap = new javax.swing.JMenuItem();
         mniDoiMatKhau = new javax.swing.JMenuItem();
         mniDangXuat = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -86,7 +85,10 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jToolBar1.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar1.setRollover(true);
 
-        btnNhanVien.setText("Nhân viên");
+        btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/User.png"))); // NOI18N
+        btnNhanVien.setText(" Nhân viên ");
+        btnNhanVien.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnNhanVien.setFocusable(false);
         btnNhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNhanVien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -97,7 +99,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jToolBar1.add(btnNhanVien);
 
-        btnSanPham.setText("Sản phẩm");
+        btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Color wheel.png"))); // NOI18N
+        btnSanPham.setText(" Sản phẩm ");
+        btnSanPham.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSanPham.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSanPham.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSanPham.addActionListener(new java.awt.event.ActionListener() {
@@ -107,18 +111,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jToolBar1.add(btnSanPham);
 
-        btnKho.setText("Kho");
-        btnKho.setFocusable(false);
-        btnKho.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnKho.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnKho.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKhoActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnKho);
-
-        btnKhachHang.setText("Khách hàng");
+        btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Boy.png"))); // NOI18N
+        btnKhachHang.setText(" Khách hàng ");
+        btnKhachHang.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnKhachHang.setFocusable(false);
         btnKhachHang.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnKhachHang.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -129,7 +124,24 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jToolBar1.add(btnKhachHang);
 
-        btnDonHang.setText("Đơn hàng");
+        btnKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Safe.png"))); // NOI18N
+        btnKho.setText("     Kho     ");
+        btnKho.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnKho.setFocusable(false);
+        btnKho.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnKho.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnKho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnKho);
+
+        btnDonHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Add to basket.png"))); // NOI18N
+        btnDonHang.setText(" Đơn hàng ");
+        btnDonHang.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDonHang.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDonHang.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnDonHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDonHangActionPerformed(evt);
@@ -137,7 +149,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jToolBar1.add(btnDonHang);
 
-        btnHoaDon.setText("Hóa đơn");
+        btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Dollar.png"))); // NOI18N
+        btnHoaDon.setText(" Hóa đơn ");
+        btnHoaDon.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnHoaDon.setFocusable(false);
         btnHoaDon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHoaDon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -148,7 +162,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jToolBar1.add(btnHoaDon);
 
-        btnHDCT.setText("Hóa đơn chi tiết");
+        btnHDCT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Price list.png"))); // NOI18N
+        btnHDCT.setText(" Hóa đơn chi tiết ");
+        btnHDCT.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnHDCT.setFocusable(false);
         btnHDCT.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHDCT.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -159,7 +175,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jToolBar1.add(btnHDCT);
 
-        btnTongHopThongKe.setText("Tổng hợp-Thống kê");
+        btnTongHopThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Bar chart.png"))); // NOI18N
+        btnTongHopThongKe.setText(" Tổng hợp-Thống kê ");
+        btnTongHopThongKe.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnTongHopThongKe.setFocusable(false);
         btnTongHopThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnTongHopThongKe.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -170,7 +188,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jToolBar1.add(btnTongHopThongKe);
 
-        btnGioiThieu.setText("Giới thiệu");
+        btnGioiThieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Info.png"))); // NOI18N
+        btnGioiThieu.setText(" Giới thiệu ");
+        btnGioiThieu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnGioiThieu.setFocusable(false);
         btnGioiThieu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnGioiThieu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -181,7 +201,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jToolBar1.add(btnGioiThieu);
 
-        btnDoiMatKhau.setText("Đổi mật khẩu");
+        btnDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Edit.png"))); // NOI18N
+        btnDoiMatKhau.setText(" Đổi mật khẩu ");
+        btnDoiMatKhau.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDoiMatKhau.setFocusable(false);
         btnDoiMatKhau.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDoiMatKhau.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -214,16 +236,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Hệ thống");
-
-        mniDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Key.png"))); // NOI18N
-        mniDangNhap.setText("Đăng nhập");
-        mniDangNhap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniDangNhapActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mniDangNhap);
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Gear.png"))); // NOI18N
 
         mniDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Edit.png"))); // NOI18N
         mniDoiMatKhau.setText("Đổi mật khẩu");
@@ -245,7 +258,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Quản lý");
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Address book.png"))); // NOI18N
 
         mniQLNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/User.png"))); // NOI18N
         mniQLNV.setText("Quản lý nhân viên");
@@ -256,7 +269,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         });
         jMenu2.add(mniQLNV);
 
-        mniQLSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Dog.png"))); // NOI18N
+        mniQLSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Color wheel.png"))); // NOI18N
         mniQLSP.setText("Quản lý sản phẩm");
         mniQLSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -312,7 +325,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jmenu.setText("Thống kê");
+        jmenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Best.png"))); // NOI18N
 
         mniThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Bar chart.png"))); // NOI18N
         mniThongKe.setText("Tổng hợp-Thống kê");
@@ -325,7 +338,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         jMenuBar1.add(jmenu);
 
-        jMenu4.setText("Thông tin");
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png"))); // NOI18N
 
         mniGioiThieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Info.png"))); // NOI18N
         mniGioiThieu.setText("Giới thiệu");
@@ -351,9 +364,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TabGDC, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addComponent(TabGDC, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -466,10 +479,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         DoiMatKhau dmk = new DoiMatKhau();
         dmk.setVisible(true);
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
-
-    private void mniDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangNhapActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniDangNhapActionPerformed
 
     private void mniDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMatKhauActionPerformed
         // TODO add your handling code here:
@@ -694,7 +703,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu jmenu;
-    private javax.swing.JMenuItem mniDangNhap;
     private javax.swing.JMenuItem mniDangXuat;
     private javax.swing.JMenuItem mniDoiMatKhau;
     private javax.swing.JMenuItem mniGioiThieu;
