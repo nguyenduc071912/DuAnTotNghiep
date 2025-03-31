@@ -533,6 +533,29 @@ public class QuanLyDonHang extends javax.swing.JFrame {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if (txtMaDH.getText().isEmpty()) {
+            sb.append("Vui lòng nhập Mã đơn hàng");
+        }
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(this, sb.toString(), "Thông báo", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            DonHang dh = new DonHang();
+            dh.setMaDH(txtMaDH.getText());
+            int choice = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa ?", "Thông báo", JOptionPane.OK_CANCEL_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                if (DonHangServices.Delete(dh)) {
+                    loadData();
+                    JOptionPane.showMessageDialog(this, "Xóa thành công");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Xóa thất bại");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void tblDHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDHMouseClicked

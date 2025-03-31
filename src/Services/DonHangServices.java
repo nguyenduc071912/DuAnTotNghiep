@@ -59,6 +59,17 @@ public class DonHangServices {
         }
         return false;
     }
+    
+    public static boolean Delete(DonHang dh){
+        String sql = "delete from DonHang where MaDH=?";
+        try (Connection con = DriverManager.getConnection(connectionUrl);PreparedStatement stm = con.prepareStatement(sql)){
+            stm.setString(1,dh.getMaDH());
+            return stm.executeUpdate()>0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public static List<DonHang> getAll() {
         String sql = "select MaDH,HoTenNV, TenKH, TenSP, Size, SoLuong, NgayDatHang, HinhThucThanhToan, TongTien from DonHang \n"
