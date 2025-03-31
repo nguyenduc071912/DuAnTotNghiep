@@ -4,9 +4,13 @@
  */
 package GiaoDien;
 
+import java.awt.event.ActionEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
@@ -28,10 +32,17 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         new LoadForm(this, true).setVisible(true);
         DangNhap dn = new DangNhap(this, true);
         dn.setVisible(true);
-
+        
         if (!dn.isDangNhapThanhCong()) {
             System.exit(0); // Thoát chương trình nếu người dùng không đăng nhập
         }
+        this.startDongHo();
+    }
+    void startDongHo(){
+        SimpleDateFormat formater = new SimpleDateFormat("hh:mm:ss a");
+        new Timer(1000, (ActionEvent e) -> {
+            DongHo.setText(formater.format(new Date()));
+        }).start();
     }
 
     /**
@@ -60,7 +71,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         btnDoiMatKhau = new javax.swing.JButton();
         TabGDC = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        DongHo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mniDoiMatKhau = new javax.swing.JMenuItem();
@@ -81,6 +92,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("QUÁN BONBONCOFFEE");
 
         jToolBar1.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar1.setRollover(true);
@@ -217,23 +229,21 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("jLabel1");
+        DongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Alarm.png"))); // NOI18N
+        DongHo.setText("00:00 AM");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(1026, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addContainerGap(984, Short.MAX_VALUE)
+                .addComponent(DongHo)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(DongHo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE)
         );
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Gear.png"))); // NOI18N
@@ -488,6 +498,12 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
     private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
         // TODO add your handling code here:
+        int choice = JOptionPane.showConfirmDialog(this, "Bạn có muốn đăng xuất ?", "Đăng xuất", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (choice == JOptionPane.YES_OPTION) {
+            DangNhap dn = new DangNhap(this, rootPaneCheckingEnabled);
+            dn.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_mniDangXuatActionPerformed
 
     private void mniQLKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLKHActionPerformed
@@ -680,6 +696,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DongHo;
     private javax.swing.JTabbedPane TabGDC;
     private javax.swing.JButton btnDoiMatKhau;
     private javax.swing.JButton btnDonHang;
@@ -692,7 +709,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     private javax.swing.JButton btnSanPham;
     private javax.swing.JButton btnTongHopThongKe;
     private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;

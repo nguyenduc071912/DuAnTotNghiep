@@ -9,18 +9,18 @@ package Mode;
  * @author Admin
  */
 public class KhachHang {
-    String MaKH,TenKH;
-    int Tuoi,GioiTinh,SDT;
+    String MaKH,TenKH,SDT;
+    int Tuoi,GioiTinh;
 
     public KhachHang() {
     }
 
-    public KhachHang(String MaKH, String TenKH, int Tuoi, int GioiTinh, int SDT) {
+    public KhachHang(String MaKH, String TenKH, String SDT, int Tuoi, int GioiTinh) {
         this.MaKH = MaKH;
         this.TenKH = TenKH;
+        this.SDT = SDT;
         this.Tuoi = Tuoi;
         this.GioiTinh = GioiTinh;
-        this.SDT = SDT;
     }
 
     public String getMaKH() {
@@ -39,6 +39,14 @@ public class KhachHang {
         this.TenKH = TenKH;
     }
 
+    public String getSDT() {
+        return SDT;
+    }
+
+    public void setSDT(String SDT) {
+        this.SDT = SDT;
+    }
+
     public int getTuoi() {
         return Tuoi;
     }
@@ -54,14 +62,7 @@ public class KhachHang {
     public void setGioiTinh(int GioiTinh) {
         this.GioiTinh = GioiTinh;
     }
-
-    public int getSDT() {
-        return SDT;
-    }
-
-    public void setSDT(int SDT) {
-        this.SDT = SDT;
-    }
+    
     
     
 }

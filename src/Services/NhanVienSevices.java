@@ -32,7 +32,7 @@ public class NhanVienSevices {
                 nv.setVaiTro(rs.getString("VaiTro"));
                 nv.setTuoi(rs.getInt("Tuoi"));
                 nv.setGioiTinh(rs.getInt("GioiTinh"));
-                nv.setSDT(rs.getInt("SDT"));
+                nv.setSDT(rs.getString("SDT"));
                 nvList.add(nv);
             }
             return nvList;
@@ -54,7 +54,7 @@ public class NhanVienSevices {
                 nv.setVaiTro(rs.getString("VaiTro"));
                 nv.setTuoi(rs.getInt("Tuoi"));
                 nv.setGioiTinh(rs.getInt("GioiTinh"));
-                nv.setSDT(rs.getInt("SDT"));
+                nv.setSDT(rs.getString("SDT"));
             }
             return nv;
         } catch (Exception e) {
@@ -76,7 +76,7 @@ public class NhanVienSevices {
                 nv.setVaiTro(rs.getString("VaiTro"));
                 nv.setTuoi(rs.getInt("Tuoi"));
                 nv.setGioiTinh(rs.getInt("GioiTinh"));
-                nv.setSDT(rs.getInt("SDT"));
+                nv.setSDT(rs.getString("SDT"));
                 nvList.add(nv);
             }
             return nvList;

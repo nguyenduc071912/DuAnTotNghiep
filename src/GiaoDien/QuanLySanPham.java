@@ -253,6 +253,15 @@ DefaultTableModel tableModel;
         }
         if(txtGiaTien.getText().isEmpty()){
             sb.append("Nhập giá tiền\n");
+        }else{
+            try {
+                float giaTien = Float.parseFloat(txtGiaTien.getText());
+                if(!(giaTien <=0)){
+                    sb.append("Giá tiền phải lớn hơn 0");
+                }
+            } catch (NumberFormatException e) {
+                sb.append("Nhập đúng định dạng giá tiền\n");
+            }
         }
         if(txtaMoTa.getText().isEmpty()){
             sb.append("Nhập mô tả\n");
@@ -296,6 +305,15 @@ DefaultTableModel tableModel;
         }
         if(txtGiaTien.getText().isEmpty()){
             sb.append("Nhập giá tiền\n");
+        }else{
+            try {
+                float giaTien = Float.parseFloat(txtGiaTien.getText());
+                if(!(giaTien >=0)){
+                    sb.append("Giá tiền phải lớn hơn 0");
+                }
+            } catch (NumberFormatException e) {
+                sb.append("Nhập đúng định dạng giá tiền\n");
+            }
         }
         if(txtaMoTa.getText().isEmpty()){
             sb.append("Nhập mô tả\n");

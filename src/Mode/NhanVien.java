@@ -9,18 +9,18 @@ package Mode;
  * @author Admin
  */
 public class NhanVien {
-    String MaNV,HoTenNV,VaiTro;
-    int Tuoi,SDT,GioiTinh;
+    String MaNV,HoTenNV,VaiTro,SDT;
+    int Tuoi,GioiTinh;
 
     public NhanVien() {
     }
 
-    public NhanVien(String MaNV, String HoTenNV, String VaiTro, int Tuoi, int SDT, int GioiTinh) {
+    public NhanVien(String MaNV, String HoTenNV, String VaiTro, String SDT, int Tuoi, int GioiTinh) {
         this.MaNV = MaNV;
         this.HoTenNV = HoTenNV;
         this.VaiTro = VaiTro;
-        this.Tuoi = Tuoi;
         this.SDT = SDT;
+        this.Tuoi = Tuoi;
         this.GioiTinh = GioiTinh;
     }
 
@@ -48,20 +48,20 @@ public class NhanVien {
         this.VaiTro = VaiTro;
     }
 
+    public String getSDT() {
+        return SDT;
+    }
+
+    public void setSDT(String SDT) {
+        this.SDT = SDT;
+    }
+
     public int getTuoi() {
         return Tuoi;
     }
 
     public void setTuoi(int Tuoi) {
         this.Tuoi = Tuoi;
-    }
-
-    public int getSDT() {
-        return SDT;
-    }
-
-    public void setSDT(int SDT) {
-        this.SDT = SDT;
     }
 
     public int getGioiTinh() {
@@ -71,6 +71,8 @@ public class NhanVien {
     public void setGioiTinh(int GioiTinh) {
         this.GioiTinh = GioiTinh;
     }
+    
+    
     
     
 }

@@ -8,6 +8,8 @@ import Mode.KhachHang;
 import Services.KhachHangServices;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,8 +36,14 @@ DefaultTableModel tableModel;
         List<KhachHang> khList = KhachHangServices.getAll();
         tableModel.setNumRows(0);
         for(KhachHang kh: khList){
-            tableModel.addRow(new Object[]{kh.getMaKH(),kh.getTenKH(),kh.getTuoi(),kh.getGioiTinh() == 0 ? "Nam":"Nữ",kh.getSDT()});
+            tableModel.addRow(new Object[]{kh.getMaKH(),kh.getTenKH(),kh.getTuoi(),kh.getGioiTinh() == 0 ? "Nam":"Nữ",String.valueOf(kh.getSDT())});
         }
+    }
+    public boolean SoDienThoai(String phoneNumber) {
+        String regex = "0[0-9]{9}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(phoneNumber);
+        return matcher.matches();
     }
 
     /**
@@ -241,12 +249,28 @@ DefaultTableModel tableModel;
         }
         if(txtTuoi.getText().isEmpty()){
             sb.append("Nhập tuổi khách hàng\n");
+        }else{
+            try {
+                int namSinh = Integer.parseInt(txtTuoi.getText());
+                if (namSinh >= 2009) {
+                    sb.append("Chưa đủ 16 tuổi để mua hàng\n");
+                }
+            } catch (NumberFormatException e) {
+                sb.append("Vui lòng nhập số hợp lệ cho tuổi\n");
+            }
         }
         if(!rdoNam.isSelected() && !rdoNu.isSelected()){
             sb.append("Chọn giới tính khách hàng\n");
         }
         if(txtSDT.getText().isEmpty()){
             sb.append("Nhập số điện thoại khách hàng\n");
+        }else{
+            try {
+                if(!SoDienThoai(txtSDT.getText())){
+                    sb.append("Vui lòng nhập đúng định dạng số điện thoại Việt Nam\n");
+                }
+            } catch (Exception e) {
+            }
         }
         if(sb.length()>0){
             JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
@@ -262,7 +286,7 @@ DefaultTableModel tableModel;
             }else{
                 kh.setGioiTinh(1);
             }
-            kh.setSDT(Integer.parseInt(txtSDT.getText()));
+            kh.setSDT(txtSDT.getText());
             int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn thêm","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
             if(chose == JOptionPane.YES_OPTION){
                 if(KhachHangServices.Create(kh)){
@@ -287,12 +311,28 @@ DefaultTableModel tableModel;
         }
         if(txtTuoi.getText().isEmpty()){
             sb.append("Nhập tuổi khách hàng\n");
+        }else{
+            try {
+                int namSinh = Integer.parseInt(txtTuoi.getText());
+                if (namSinh >= 2009) {
+                    sb.append("Chưa đủ 16 tuổi để mua hàng\n");
+                }
+            } catch (NumberFormatException e) {
+                sb.append("Vui lòng nhập số hợp lệ cho tuổi\n");
+            }
         }
         if(!rdoNam.isSelected() && !rdoNu.isSelected()){
             sb.append("Chọn giới tính khách hàng\n");
         }
         if(txtSDT.getText().isEmpty()){
             sb.append("Nhập số điện thoại khách hàng\n");
+        }else{
+            try {
+                if(!SoDienThoai(txtSDT.getText())){
+                    sb.append("Vui lòng nhập đúng định dạng số điện thoại Việt Nam\n");
+                }
+            } catch (Exception e) {
+            }
         }
         if(sb.length()>0){
             JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
@@ -308,7 +348,7 @@ DefaultTableModel tableModel;
             }else{
                 kh.setGioiTinh(1);
             }
-            kh.setSDT(Integer.parseInt(txtSDT.getText()));
+            kh.setSDT(txtSDT.getText());
             int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn sửa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
             if(chose == JOptionPane.YES_OPTION){
                 if(KhachHangServices.Update(kh)){
@@ -380,7 +420,7 @@ DefaultTableModel tableModel;
             }else{
                 rdoNu.setSelected(true);
             }
-            txtSDT.setText(String.valueOf(kh.getSDT()));
+            txtSDT.setText(kh.getSDT());
         }
     }//GEN-LAST:event_tblKHMouseClicked
 

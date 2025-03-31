@@ -30,7 +30,7 @@ public class KhachHangServices {
                 kh.setTenKH(rs.getString("TenKH"));
                 kh.setTuoi(rs.getInt("Tuoi"));
                 kh.setGioiTinh(rs.getInt("GioiTinh"));
-                kh.setSDT(rs.getInt("SDT"));
+                kh.setSDT(rs.getString("SDT"));
                 khList.add(kh);
             }
             return khList;
@@ -52,7 +52,7 @@ public class KhachHangServices {
                 kh.setTenKH(rs.getString("TenKH"));
                 kh.setTuoi(rs.getInt("Tuoi"));
                 kh.setGioiTinh(rs.getInt("GioiTinh"));
-                kh.setSDT(rs.getInt("SDT"));
+                kh.setSDT(rs.getString("SDT"));
                 khList.add(kh);
             }
             return khList;
@@ -73,7 +73,7 @@ public class KhachHangServices {
                 kh.setTenKH(rs.getString("TenKH"));
                 kh.setTuoi(rs.getInt("Tuoi"));
                 kh.setGioiTinh(rs.getInt("GioiTinh"));
-                kh.setSDT(rs.getInt("SDT"));
+                kh.setSDT(rs.getString("SDT"));
             }
             return kh;
         } catch (Exception e) {

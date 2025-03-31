@@ -9,6 +9,8 @@ package GiaoDien;
 import Mode.NhanVien;
 import Services.NhanVienSevices;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -37,6 +39,12 @@ DefaultTableModel tableModel;
         for(NhanVien nv: nvList){
             tableModel.addRow(new Object[]{nv.getMaNV(),nv.getHoTenNV(),nv.getVaiTro(),nv.getTuoi(),nv.getSDT(),nv.getGioiTinh() == 0 ? "Nam":"Nữ"});
         }
+    }
+    public boolean SoDienThoai(String phoneNumber) {
+        String regex = "0[0-9]{9}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(phoneNumber);
+        return matcher.matches();
     }
 
     /**
@@ -289,9 +297,25 @@ DefaultTableModel tableModel;
         }
         if(txtTuoi.getText().isEmpty()){
             sb.append("Nhập tuổi nhân viên\n");
+        }else{
+            try {
+                int namSinh = Integer.parseInt(txtTuoi.getText());
+                if (!(namSinh <= 2009) || !(namSinh >= 1995)) {
+                    sb.append("Tuổi không đúng quy định của quán (16-30)\n");
+                }
+            } catch (NumberFormatException e) {
+                sb.append("Vui lòng nhập số hợp lệ cho tuổi\n");
+            }
         }
         if(txtSDT.getText().isEmpty()){
-            sb.append("Nhập số điện thoại khách hàng\n");
+            sb.append("Nhập số điện thoại nhân viên\n");
+        }else{
+            try {
+                if(!SoDienThoai(txtSDT.getText())){
+                    sb.append("Vui lòng nhập đúng định dạng số điện thoại Việt Nam\n");
+                }
+            } catch (Exception e) {
+            }
         }
         if(!rdoNam.isSelected() && !rdoNu.isSelected()){
             sb.append("Chọn giới tính nhân viên\n");
@@ -306,7 +330,7 @@ DefaultTableModel tableModel;
             nv.setHoTenNV(txtTen.getText());
             nv.setVaiTro(cboVaiTro.getSelectedItem().toString());
             nv.setTuoi(Integer.parseInt(txtTuoi.getText()));
-            nv.setSDT(Integer.parseInt(txtSDT.getText()));
+            nv.setSDT(txtSDT.getText());
             if(rdoNam.isSelected()){
                 nv.setGioiTinh(0);
             }else{
@@ -336,9 +360,28 @@ DefaultTableModel tableModel;
         }
         if(txtTuoi.getText().isEmpty()){
             sb.append("Nhập tuổi nhân viên\n");
+        }else{
+            try {
+                int namSinh = Integer.parseInt(txtTuoi.getText());
+                if (!(namSinh <= 2009) || !(namSinh >= 1995)) {
+                    sb.append("Tuổi không đúng quy định của quán (16-30)\n");
+                }
+            } catch (NumberFormatException e) {
+                sb.append("Vui lòng nhập số hợp lệ cho tuổi\n");
+            }
         }
         if(txtSDT.getText().isEmpty()){
-            sb.append("Nhập số điện thoại khách hàng\n");
+            sb.append("Nhập số điện thoại nhân viên\n");
+        }
+        if(txtSDT.getText().isEmpty()){
+            sb.append("Nhập số điện thoại nhân viên\n");
+        }else{
+            try {
+                if(!SoDienThoai(txtSDT.getText())){
+                    sb.append("Vui lòng nhập đúng định dạng số điện thoại Việt Nam\n");
+                }
+            } catch (Exception e) {
+            }
         }
         if(!rdoNam.isSelected() && !rdoNu.isSelected()){
             sb.append("Chọn giới tính nhân viên\n");
@@ -353,7 +396,7 @@ DefaultTableModel tableModel;
             nv.setHoTenNV(txtTen.getText());
             nv.setVaiTro(cboVaiTro.getSelectedItem().toString());
             nv.setTuoi(Integer.parseInt(txtTuoi.getText()));
-            nv.setSDT(Integer.parseInt(txtSDT.getText()));
+            nv.setSDT(txtSDT.getText());
             if(rdoNam.isSelected()){
                 nv.setGioiTinh(0);
             }else{
