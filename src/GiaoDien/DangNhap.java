@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,7 +25,8 @@ public class DangNhap extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/iconbonbon.png"));
+        setIconImage(icon.getImage());
     }
 
     private boolean isDangNhapThanhCong = false;
@@ -82,6 +84,7 @@ public class DangNhap extends javax.swing.JDialog {
         txtMK = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Đăng nhập");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logoBonbon.png"))); // NOI18N
 

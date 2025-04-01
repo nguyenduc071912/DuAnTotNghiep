@@ -6,6 +6,7 @@ package GiaoDien;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 /**
@@ -21,6 +22,8 @@ public class LoadForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         init();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/iconbonbon.png"));
+        setIconImage(icon.getImage());
     }
     
     void init() {

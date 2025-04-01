@@ -4,9 +4,16 @@
  */
 package GiaoDien;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,6 +31,8 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     public GiaoDienChinh() {
         initComponents();
         init();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/iconbonbon.png"));
+        setIconImage(icon.getImage());
     }
 
     void init() {

@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -27,6 +28,8 @@ public class DoiMatKhau extends javax.swing.JFrame {
     public DoiMatKhau() {
         initComponents();
         init();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/iconbonbon.png"));
+        setIconImage(icon.getImage());
     }
 
     void init() {
@@ -101,6 +104,7 @@ public class DoiMatKhau extends javax.swing.JFrame {
         txtMKCu = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Đổi mật khẩu");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 0, 51));
