@@ -168,6 +168,38 @@ public class DonHangServices {
 
         return gia;
     }
-
     
+    public static boolean checkStockBeforeAdd(String maSP, int soLuongMua) {
+        String query = "SELECT k.SoLuong FROM Kho k JOIN SanPham sp ON k.MaNL = sp.MaNL WHERE sp.MaSP = ?";
+        
+        try (Connection conn = DriverManager.getConnection(connectionUrl);PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, maSP);
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                int soLuongTrongKho = rs.getInt("SoLuong");
+                return soLuongMua <= soLuongTrongKho;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public static boolean isThuNgan(String maNV) {
+    String query = "SELECT COUNT(*) FROM NhanVien WHERE MaNV = ? AND VaiTro = 'Thu ngân'";
+
+    try (Connection conn = DriverManager.getConnection(connectionUrl);PreparedStatement stmt = conn.prepareStatement(query)) {
+        stmt.setString(1, maNV);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next() && rs.getInt(1) > 0) {
+            return true; // Nhân viên là thu ngân
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return false; // Không phải thu ngân
+}
+
 }

@@ -4,11 +4,13 @@
  */
 package GiaoDien;
 
-
 import Mode.Kho;
 import Services.KhoServices;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,7 +18,11 @@ import javax.swing.table.DefaultTableModel;
  * @author Administrator
  */
 public class QuanLyKho extends javax.swing.JFrame {
+
+    private Timer timer;
+
     DefaultTableModel tableModel;
+
     /**
      * Creates new form QuanLyKho
      */
@@ -24,18 +30,32 @@ public class QuanLyKho extends javax.swing.JFrame {
         initComponents();
         initTable();
         loadData();
+        startAutoRefresh();
     }
-    public void initTable(){
+
+    public void initTable() {
         tableModel = new DefaultTableModel();
-        tableModel.setColumnIdentifiers(new String[]{"Mã nguyên liệu","Tên nguyên liệu","Số lượng","Đơn vị"});
+        tableModel.setColumnIdentifiers(new String[]{"Mã nguyên liệu", "Tên nguyên liệu", "Số lượng", "Đơn vị"});
         tblKho.setModel(tableModel);
     }
-    public void loadData(){
+
+    public void loadData() {
         List<Kho> kList = KhoServices.getAll();
         tableModel.setNumRows(0);
-        for(Kho k: kList){
-            tableModel.addRow(new Object[]{k.getMaNL(),k.getTenNL(),Integer.valueOf((int) k.getSoLuong()),k.getDonVi()});
+        for (Kho k : kList) {
+            tableModel.addRow(new Object[]{k.getMaNL(), k.getTenNL(), Integer.valueOf((int) k.getSoLuong()), k.getDonVi()});
         }
+    }
+
+    public void startAutoRefresh() {
+        timer = new Timer(2000, new ActionListener() {
+            // 2000ms = 2 giây
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadData(); // Gọi phương thức cập nhật bảng
+            }
+        });
+        timer.start(); // Chạy Timer
     }
 
     /**
@@ -217,8 +237,8 @@ public class QuanLyKho extends javax.swing.JFrame {
         List<Kho> kList = (List<Kho>) KhoServices.getById(MaNL);
         if (kList != null) {
             tableModel.setNumRows(0);
-            for(Kho k: kList){
-                tableModel.addRow(new Object[]{k.getMaNL(),k.getTenNL(),k.getSoLuong(),k.getDonVi()});
+            for (Kho k : kList) {
+                tableModel.addRow(new Object[]{k.getMaNL(), k.getTenNL(), k.getSoLuong(), k.getDonVi()});
             }
         } else {
             JOptionPane.showMessageDialog(null, "Không tìm thấy nguyên liệu với mã: " + MaNL);
@@ -228,26 +248,26 @@ public class QuanLyKho extends javax.swing.JFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
-        if(txtMa.getText().isEmpty()){
+        if (txtMa.getText().isEmpty()) {
             sb.append("Nhập mã nguyên liệu\n");
         }
-        if(txtTen.getText().isEmpty()){
+        if (txtTen.getText().isEmpty()) {
             sb.append("Nhập tên nguyên liệu\n");
         }
-        if(txtSoluong.getText().isEmpty()){
+        if (txtSoluong.getText().isEmpty()) {
             sb.append("Nhập số lượng\n");
-        }else{
+        } else {
             try {
                 int soLuong = Integer.parseInt(txtSoluong.getText());
-                if(soLuong <=0){
+                if (soLuong <= 0) {
                     sb.append("Số lượng phải lớn hơn 0");
                 }
             } catch (NumberFormatException e) {
                 sb.append("Nhập đúng định dạng số lượng\n");
             }
         }
-        if(sb.length()>0){
-            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(null, sb.toString(), "Thông báo", JOptionPane.ERROR_MESSAGE);
             return;
         }
         try {
@@ -256,13 +276,13 @@ public class QuanLyKho extends javax.swing.JFrame {
             k.setTenNL(txtTen.getText());
             k.setSoLuong(Integer.parseInt(txtSoluong.getText()));
             k.setDonVi(cboDonVi.getSelectedItem().toString());
-            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn thêm","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
-            if(chose == JOptionPane.YES_OPTION){
-                if(KhoServices.Create(k)){
-                    JOptionPane.showMessageDialog(this,"Thêm thành công");
+            int chose = JOptionPane.showConfirmDialog(this, "Bạn có muốn thêm", "Thông báo", JOptionPane.YES_NO_CANCEL_OPTION);
+            if (chose == JOptionPane.YES_OPTION) {
+                if (KhoServices.Create(k)) {
+                    JOptionPane.showMessageDialog(this, "Thêm thành công");
                     loadData();
-                }else{
-                    JOptionPane.showMessageDialog(this,"Thêm thất bại");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Thêm thất bại");
                 }
             }
         } catch (Exception e) {
@@ -272,26 +292,26 @@ public class QuanLyKho extends javax.swing.JFrame {
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
-        if(txtMa.getText().isEmpty()){
+        if (txtMa.getText().isEmpty()) {
             sb.append("Nhập mã nguyên liệu\n");
         }
-        if(txtTen.getText().isEmpty()){
+        if (txtTen.getText().isEmpty()) {
             sb.append("Nhập tên nguyên liệu\n");
         }
-        if(txtSoluong.getText().isEmpty()){
+        if (txtSoluong.getText().isEmpty()) {
             sb.append("Nhập số lượng\n");
-        }else{
+        } else {
             try {
                 int soLuong = Integer.parseInt(txtSoluong.getText());
-                if(soLuong <=0){
+                if (soLuong <= 0) {
                     sb.append("Số lượng phải lớn hơn 0");
                 }
             } catch (NumberFormatException e) {
                 sb.append("Nhập đúng định dạng số lượng\n");
             }
         }
-        if(sb.length()>0){
-            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(null, sb.toString(), "Thông báo", JOptionPane.ERROR_MESSAGE);
             return;
         }
         try {
@@ -300,13 +320,13 @@ public class QuanLyKho extends javax.swing.JFrame {
             k.setTenNL(txtTen.getText());
             k.setSoLuong(Integer.parseInt(txtSoluong.getText()));
             k.setDonVi(cboDonVi.getSelectedItem().toString());
-            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn sửa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
-            if(chose == JOptionPane.YES_OPTION){
-                if(KhoServices.Update(k)){
-                    JOptionPane.showMessageDialog(this,"Sửa thành công");
+            int chose = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa", "Thông báo", JOptionPane.YES_NO_CANCEL_OPTION);
+            if (chose == JOptionPane.YES_OPTION) {
+                if (KhoServices.Update(k)) {
+                    JOptionPane.showMessageDialog(this, "Sửa thành công");
                     loadData();
-                }else{
-                    JOptionPane.showMessageDialog(this,"Sửa thất bại");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Sửa thất bại");
                 }
             }
         } catch (Exception e) {
@@ -316,23 +336,23 @@ public class QuanLyKho extends javax.swing.JFrame {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
-        if(txtMa.getText().isEmpty()){
+        if (txtMa.getText().isEmpty()) {
             sb.append("Nhập mã nguyên liệu\n");
         }
-        if(sb.length()>0){
-            JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(null, sb.toString(), "Thông báo", JOptionPane.ERROR_MESSAGE);
             return;
         }
         try {
             Kho k = new Kho();
             k.setMaNL(txtMa.getText());
-            int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn xóa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
-            if(chose == JOptionPane.YES_OPTION){
-                if(KhoServices.Delete(k)){
-                    JOptionPane.showMessageDialog(this,"Xóa thành công");
+            int chose = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa", "Thông báo", JOptionPane.YES_NO_CANCEL_OPTION);
+            if (chose == JOptionPane.YES_OPTION) {
+                if (KhoServices.Delete(k)) {
+                    JOptionPane.showMessageDialog(this, "Xóa thành công");
                     loadData();
-                }else{
-                    JOptionPane.showMessageDialog(this,"Xóa thất bại");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Xóa thất bại");
                 }
             }
         } catch (Exception e) {
@@ -342,12 +362,12 @@ public class QuanLyKho extends javax.swing.JFrame {
     private void tblKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhoMouseClicked
         // TODO add your handling code here:
         int row = tblKho.getSelectedRow();
-        if(row>-1){
+        if (row > -1) {
             String ma = (String) tblKho.getValueAt(row, 0);
             Kho k = KhoServices.getByName(ma);
             txtMa.setText(k.getMaNL());
             txtTen.setText(k.getTenNL());
-            txtSoluong.setText(String.valueOf((int)k.getSoLuong()));
+            txtSoluong.setText(String.valueOf((int) k.getSoLuong()));
             cboDonVi.setSelectedItem(k.getDonVi());
         }
     }//GEN-LAST:event_tblKhoMouseClicked

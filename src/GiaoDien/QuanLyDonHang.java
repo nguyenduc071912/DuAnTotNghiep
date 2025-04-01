@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -21,6 +22,7 @@ import java.sql.ResultSet;
  */
 public class QuanLyDonHang extends javax.swing.JFrame {
 
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     static String connectionUrl = "jdbc:sqlserver://26.107.57.204:1433;databaseName=DATN_PRO230;user=datn;password=123;trustServerCertificate=true";
     DefaultTableModel tblModel;
 
@@ -32,6 +34,7 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         initTable();
         loadData();
         txtTongTien.setEnabled(false);
+        sdf.setLenient(false);
     }
 
     public void initTable() {
@@ -382,6 +385,16 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         }
         if (txtMaNV.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã nhân viên");
+        }else{
+            try {
+                if (!DonHangServices.isThuNgan(txtMaNV.getText())) {
+                    JOptionPane.showMessageDialog(this, "Nhân viên không phải thu ngân!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Lỗi kiểm tra nhân viên: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
         }
         if (txtMaKH.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã khách hàng");
@@ -391,10 +404,10 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         }
         if (txtSoLuong.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã số lượng");
-        }else{
+        } else {
             try {
                 int soLuong = Integer.parseInt(txtSoLuong.getText());
-                if(soLuong <=0){
+                if (soLuong <= 0) {
                     sb.append("Số lượng phải lớn hơn 0");
                 }
             } catch (NumberFormatException e) {
@@ -403,6 +416,12 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         }
         if (txtNgayTaoDon.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã ngày tạo đơn");
+        } else {
+            try {
+                sdf.parse(txtNgayTaoDon.getText());
+            } catch (Exception e) {
+                sb.append("Vui lòng nhập đúng định dạng 'yyyy-MM-dd'");
+            }
         }
         if (txtTongTien.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã tổng tiền");
@@ -422,6 +441,11 @@ public class QuanLyDonHang extends javax.swing.JFrame {
             dh.setNgayDatHang(txtNgayTaoDon.getText());
             dh.setHinhThucThanhToan((String) cboHinhThucThanhToan.getSelectedItem());
             dh.setTongTien(Integer.parseInt(txtTongTien.getText()));
+            if (!DonHangServices.checkStockBeforeAdd(txtMaSP.getText(), Integer.parseInt(txtSoLuong.getText()))) {
+                JOptionPane.showMessageDialog(this, "Số lượng trong kho không đủ!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             int choice = JOptionPane.showConfirmDialog(this, "Bạn có muốn thêm ?", "Thông báo", JOptionPane.OK_CANCEL_OPTION);
             if (choice == JOptionPane.YES_OPTION) {
                 if (DonHangServices.Insert(dh)) {
@@ -495,6 +519,17 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         }
         if (txtMaNV.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã nhân viên");
+        } else {
+            try {
+                if (!DonHangServices.isThuNgan(txtMaNV.getText())) {
+                    JOptionPane.showMessageDialog(this, "Nhân viên không phải thu ngân!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Lỗi kiểm tra nhân viên: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
         }
         if (txtMaKH.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã khách hàng");
@@ -504,10 +539,10 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         }
         if (txtSoLuong.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã số lượng");
-        }else{
+        } else {
             try {
                 int soLuong = Integer.parseInt(txtSoLuong.getText());
-                if(soLuong <=0){
+                if (soLuong <= 0) {
                     sb.append("Số lượng phải lớn hơn 0");
                 }
             } catch (NumberFormatException e) {
@@ -516,6 +551,12 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         }
         if (txtNgayTaoDon.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã ngày tạo đơn");
+        } else {
+            try {
+                sdf.parse(txtNgayTaoDon.getText());
+            } catch (Exception e) {
+                sb.append("Vui lòng nhập đúng định dạng 'yyyy-MM-dd'");
+            }
         }
         if (txtTongTien.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã tổng tiền");
