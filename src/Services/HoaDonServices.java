@@ -28,7 +28,7 @@ public class HoaDonServices {
                 hd.setMaNV(rs.getString("HoTenNV"));
                 hd.setMaDH(rs.getString("MaDH"));
                 hd.setNgayLapHD(rs.getString("NgayLapHD"));
-                hd.setGiaTien(rs.getFloat("GiaTien"));
+                hd.setGiaTien(rs.getInt("GiaTien"));
                 list.add(hd);
             }
             return list;
@@ -50,7 +50,7 @@ public class HoaDonServices {
                 hd.setMaNV(rs.getString("MaNV"));
                 hd.setMaDH(rs.getString("MaDH"));
                 hd.setNgayLapHD(rs.getString("NgayLapHD"));
-                hd.setGiaTien(rs.getFloat("GiaTien"));
+                hd.setGiaTien(rs.getInt("GiaTien"));
                 hdlist.add(hd);
             }
             return hdlist;

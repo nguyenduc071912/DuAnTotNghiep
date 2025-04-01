@@ -10,12 +10,12 @@ package Mode;
  */
 public class SanPham {
     String MaSP,MaNL,TenSP,MoTa,LoaiSP;
-    float GiaTien;
+    int GiaTien;
 
     public SanPham() {
     }
 
-    public SanPham(String MaSP, String MaNL, String TenSP, String MoTa, String LoaiSP, float GiaTien) {
+    public SanPham(String MaSP, String MaNL, String TenSP, String MoTa, String LoaiSP, int GiaTien) {
         this.MaSP = MaSP;
         this.MaNL = MaNL;
         this.TenSP = TenSP;
@@ -64,13 +64,13 @@ public class SanPham {
         this.LoaiSP = LoaiSP;
     }
 
-    public float getGiaTien() {
+    public int getGiaTien() {
         return GiaTien;
     }
 
-    public void setGiaTien(float GiaTien) {
+    public void setGiaTien(int GiaTien) {
         this.GiaTien = GiaTien;
     }
-    
+
     
 }

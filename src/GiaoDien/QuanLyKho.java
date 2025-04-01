@@ -34,7 +34,7 @@ public class QuanLyKho extends javax.swing.JFrame {
         List<Kho> kList = KhoServices.getAll();
         tableModel.setNumRows(0);
         for(Kho k: kList){
-            tableModel.addRow(new Object[]{k.getMaNL(),k.getTenNL(),k.getSoLuong(),k.getDonVi()});
+            tableModel.addRow(new Object[]{k.getMaNL(),k.getTenNL(),Integer.valueOf((int) k.getSoLuong()),k.getDonVi()});
         }
     }
 
@@ -62,7 +62,7 @@ public class QuanLyKho extends javax.swing.JFrame {
         txtTim = new javax.swing.JTextField();
         btnTim = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        txtDonVi = new javax.swing.JTextField();
+        cboDonVi = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,11 +124,7 @@ public class QuanLyKho extends javax.swing.JFrame {
 
         jLabel5.setText("Đơn vị");
 
-        txtDonVi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDonViActionPerformed(evt);
-            }
-        });
+        cboDonVi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gói", "Quả" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,10 +148,10 @@ public class QuanLyKho extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addGap(72, 72, 72)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtDonVi, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                            .addComponent(txtSoluong)
+                            .addComponent(txtSoluong, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
                             .addComponent(txtMa)
-                            .addComponent(txtTen)))
+                            .addComponent(txtTen)
+                            .addComponent(cboDonVi, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnThem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -198,7 +194,7 @@ public class QuanLyKho extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtDonVi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cboDonVi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnThem)
@@ -229,10 +225,6 @@ public class QuanLyKho extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTimActionPerformed
 
-    private void txtDonViActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDonViActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDonViActionPerformed
-
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
@@ -244,9 +236,15 @@ public class QuanLyKho extends javax.swing.JFrame {
         }
         if(txtSoluong.getText().isEmpty()){
             sb.append("Nhập số lượng\n");
-        }
-        if(txtDonVi.getText().isEmpty()){
-            sb.append("Nhập đơn vị\n");
+        }else{
+            try {
+                int soLuong = Integer.parseInt(txtSoluong.getText());
+                if(soLuong <=0){
+                    sb.append("Số lượng phải lớn hơn 0");
+                }
+            } catch (NumberFormatException e) {
+                sb.append("Nhập đúng định dạng số lượng\n");
+            }
         }
         if(sb.length()>0){
             JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
@@ -257,7 +255,7 @@ public class QuanLyKho extends javax.swing.JFrame {
             k.setMaNL(txtMa.getText());
             k.setTenNL(txtTen.getText());
             k.setSoLuong(Integer.parseInt(txtSoluong.getText()));
-            k.setDonVi(txtDonVi.getText());
+            k.setDonVi(cboDonVi.getSelectedItem().toString());
             int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn thêm","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
             if(chose == JOptionPane.YES_OPTION){
                 if(KhoServices.Create(k)){
@@ -282,9 +280,15 @@ public class QuanLyKho extends javax.swing.JFrame {
         }
         if(txtSoluong.getText().isEmpty()){
             sb.append("Nhập số lượng\n");
-        }
-        if(txtDonVi.getText().isEmpty()){
-            sb.append("Nhập đơn vị\n");
+        }else{
+            try {
+                int soLuong = Integer.parseInt(txtSoluong.getText());
+                if(soLuong <=0){
+                    sb.append("Số lượng phải lớn hơn 0");
+                }
+            } catch (NumberFormatException e) {
+                sb.append("Nhập đúng định dạng số lượng\n");
+            }
         }
         if(sb.length()>0){
             JOptionPane.showMessageDialog(null, sb.toString(),"Thông báo",JOptionPane.ERROR_MESSAGE);
@@ -295,7 +299,7 @@ public class QuanLyKho extends javax.swing.JFrame {
             k.setMaNL(txtMa.getText());
             k.setTenNL(txtTen.getText());
             k.setSoLuong(Integer.parseInt(txtSoluong.getText()));
-            k.setDonVi(txtDonVi.getText());
+            k.setDonVi(cboDonVi.getSelectedItem().toString());
             int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn sửa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
             if(chose == JOptionPane.YES_OPTION){
                 if(KhoServices.Update(k)){
@@ -343,8 +347,8 @@ public class QuanLyKho extends javax.swing.JFrame {
             Kho k = KhoServices.getByName(ma);
             txtMa.setText(k.getMaNL());
             txtTen.setText(k.getTenNL());
-            txtSoluong.setText(String.valueOf(k.getSoLuong()));
-            txtDonVi.setText(k.getDonVi());
+            txtSoluong.setText(String.valueOf((int)k.getSoLuong()));
+            cboDonVi.setSelectedItem(k.getDonVi());
         }
     }//GEN-LAST:event_tblKhoMouseClicked
 
@@ -388,6 +392,7 @@ public class QuanLyKho extends javax.swing.JFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTim;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cboDonVi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -395,7 +400,6 @@ public class QuanLyKho extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblKho;
-    private javax.swing.JTextField txtDonVi;
     private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtSoluong;
     private javax.swing.JTextField txtTen;

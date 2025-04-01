@@ -31,7 +31,7 @@ public class SanPhamServices {
                 sp.setMaSP(rs.getString("MaSP"));
                 sp.setMaNL(rs.getString("TenNL"));
                 sp.setTenSP(rs.getString("TenSP"));
-                sp.setGiaTien(rs.getFloat("GiaTien"));
+                sp.setGiaTien(rs.getInt("GiaTien"));
                 sp.setLoaiSP(rs.getString("LoaiSP"));
                 sp.setMoTa(rs.getString("MoTa"));
                 spList.add(sp);
@@ -53,7 +53,7 @@ public class SanPhamServices {
                 sp.setMaSP(rs.getString("MaSP"));
                 sp.setMaNL(rs.getString("MaNL"));
                 sp.setTenSP(rs.getString("TenSP"));
-                sp.setGiaTien(rs.getFloat("GiaTien"));
+                sp.setGiaTien(rs.getInt("GiaTien"));
                 sp.setLoaiSP(rs.getString("LoaiSP"));
                 sp.setMoTa(rs.getString("MoTa"));
             }
@@ -75,7 +75,7 @@ public class SanPhamServices {
                 sp.setMaSP(rs.getString("MaSP"));
                 sp.setMaNL(rs.getString("MaNL"));
                 sp.setTenSP(rs.getString("TenSP"));
-                sp.setGiaTien(rs.getFloat("GiaTien"));
+                sp.setGiaTien(rs.getInt("GiaTien"));
                 sp.setLoaiSP(rs.getString("LoaiSP"));
                 sp.setMoTa(rs.getString("MoTa"));
                 spList.add(sp);

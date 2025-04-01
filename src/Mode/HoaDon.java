@@ -10,12 +10,12 @@ package Mode;
  */
 public class HoaDon {
     String MaHD,MaNV,MaDH,NgayLapHD;
-    float GiaTien;
+    int GiaTien;
 
     public HoaDon() {
     }
 
-    public HoaDon(String MaHD, String MaNV, String MaDH, String NgayLapHD, float GiaTien) {
+    public HoaDon(String MaHD, String MaNV, String MaDH, String NgayLapHD, int GiaTien) {
         this.MaHD = MaHD;
         this.MaNV = MaNV;
         this.MaDH = MaDH;
@@ -55,13 +55,13 @@ public class HoaDon {
         this.NgayLapHD = NgayLapHD;
     }
 
-    public float getGiaTien() {
+    public int getGiaTien() {
         return GiaTien;
     }
 
-    public void setGiaTien(float GiaTien) {
+    public void setGiaTien(int GiaTien) {
         this.GiaTien = GiaTien;
     }
-    
-    
+
+     
 }

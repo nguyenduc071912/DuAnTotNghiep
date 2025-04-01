@@ -34,7 +34,7 @@ DefaultTableModel tableModel;
         List<SanPham> spList = SanPhamServices.getAll();
         tableModel.setNumRows(0);
         for(SanPham sp: spList){
-            tableModel.addRow(new Object[]{sp.getMaSP(),sp.getMaNL(),sp.getTenSP(),sp.getGiaTien()+" VNĐ",sp.getLoaiSP(),sp.getMoTa()});
+            tableModel.addRow(new Object[]{sp.getMaSP(),sp.getMaNL(),sp.getTenSP(),Integer.valueOf(sp.getGiaTien())+" VNĐ",sp.getLoaiSP(),sp.getMoTa()});
         }
     }
 
@@ -255,8 +255,8 @@ DefaultTableModel tableModel;
             sb.append("Nhập giá tiền\n");
         }else{
             try {
-                float giaTien = Float.parseFloat(txtGiaTien.getText());
-                if(!(giaTien <=0)){
+                int giaTien = Integer.parseInt(txtGiaTien.getText());
+                if(giaTien <=0){
                     sb.append("Giá tiền phải lớn hơn 0");
                 }
             } catch (NumberFormatException e) {
@@ -275,7 +275,7 @@ DefaultTableModel tableModel;
             sp.setMaSP(txtMaSP.getText());
             sp.setMaNL(txtMaNL.getText());
             sp.setTenSP(txtTenSP.getText());
-            sp.setGiaTien(Float.parseFloat(txtGiaTien.getText()));
+            sp.setGiaTien(Integer.parseInt(txtGiaTien.getText()));
             sp.setLoaiSP(cboLoaiSP.getSelectedItem().toString());
             sp.setMoTa(txtaMoTa.getText());
             int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn thêm","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
@@ -307,8 +307,8 @@ DefaultTableModel tableModel;
             sb.append("Nhập giá tiền\n");
         }else{
             try {
-                float giaTien = Float.parseFloat(txtGiaTien.getText());
-                if(!(giaTien >=0)){
+                int giaTien = Integer.parseInt(txtGiaTien.getText());
+                if(giaTien <=0){
                     sb.append("Giá tiền phải lớn hơn 0");
                 }
             } catch (NumberFormatException e) {
@@ -327,7 +327,7 @@ DefaultTableModel tableModel;
             sp.setMaSP(txtMaSP.getText());
             sp.setMaNL(txtMaNL.getText());
             sp.setTenSP(txtTenSP.getText());
-            sp.setGiaTien(Float.parseFloat(txtGiaTien.getText()));
+            sp.setGiaTien(Integer.parseInt(txtGiaTien.getText()));
             sp.setLoaiSP(cboLoaiSP.getSelectedItem().toString());
             sp.setMoTa(txtaMoTa.getText());
             int chose = JOptionPane.showConfirmDialog(this,"Bạn có muốn sửa","Thông báo",JOptionPane.YES_NO_CANCEL_OPTION);
@@ -380,7 +380,7 @@ DefaultTableModel tableModel;
         if (spList != null) {
             tableModel.setNumRows(0);
             for(SanPham sp: spList){
-                tableModel.addRow(new Object[]{sp.getMaSP(),sp.getMaNL(),sp.getTenSP(),sp.getGiaTien()+" VNĐ",sp.getLoaiSP(),sp.getMoTa()});
+                tableModel.addRow(new Object[]{sp.getMaSP(),sp.getMaNL(),sp.getTenSP(),Integer.valueOf(sp.getGiaTien())+" VNĐ",sp.getLoaiSP(),sp.getMoTa()});
             }
         } else {
             JOptionPane.showMessageDialog(null, "Không tìm thấy sản phẩm với mã: " + MaSP);

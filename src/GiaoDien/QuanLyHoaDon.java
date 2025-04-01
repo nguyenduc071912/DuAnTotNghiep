@@ -40,7 +40,7 @@ public class QuanLyHoaDon extends javax.swing.JFrame {
         List<HoaDon> hdlist = HoaDonServices.getAll();
         tblModel.setNumRows(0);
         for (HoaDon hd : hdlist) {
-            tblModel.addRow(new Object[]{hd.getMaHD(),hd.getMaNV(),hd.getMaDH(),hd.getNgayLapHD(),hd.getGiaTien() + " VNĐ"});
+            tblModel.addRow(new Object[]{hd.getMaHD(),hd.getMaNV(),hd.getMaDH(),hd.getNgayLapHD(),Integer.valueOf(hd.getGiaTien())+ " VNĐ"});
         }
     }
     
@@ -144,7 +144,7 @@ public class QuanLyHoaDon extends javax.swing.JFrame {
         if (hdList != null) {
             tblModel.setNumRows(0);
                 for (HoaDon hd : hdList) {
-                    tblModel.addRow(new Object[]{hd.getMaHD(),hd.getMaNV(),hd.getMaDH(),hd.getNgayLapHD(),hd.getGiaTien() + " VNĐ"});
+                    tblModel.addRow(new Object[]{hd.getMaHD(),hd.getMaNV(),hd.getMaDH(),hd.getNgayLapHD(),Integer.valueOf(hd.getGiaTien()) + " VNĐ"});
             }
         } else {
             JOptionPane.showMessageDialog(null, "Không tìm thấy khách hàng với mã: " + MaHD);

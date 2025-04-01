@@ -391,6 +391,15 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         }
         if (txtSoLuong.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã số lượng");
+        }else{
+            try {
+                int soLuong = Integer.parseInt(txtSoLuong.getText());
+                if(soLuong <=0){
+                    sb.append("Số lượng phải lớn hơn 0");
+                }
+            } catch (NumberFormatException e) {
+                sb.append("Nhập đúng định dạng số lượng\n");
+            }
         }
         if (txtNgayTaoDon.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã ngày tạo đơn");
@@ -495,6 +504,15 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         }
         if (txtSoLuong.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã số lượng");
+        }else{
+            try {
+                int soLuong = Integer.parseInt(txtSoLuong.getText());
+                if(soLuong <=0){
+                    sb.append("Số lượng phải lớn hơn 0");
+                }
+            } catch (NumberFormatException e) {
+                sb.append("Nhập đúng định dạng số lượng\n");
+            }
         }
         if (txtNgayTaoDon.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã ngày tạo đơn");
