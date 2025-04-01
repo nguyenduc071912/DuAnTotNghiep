@@ -31,7 +31,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     public GiaoDienChinh() {
         initComponents();
         init();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/iconbonbon.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/logoBonBon.png"));
         setIconImage(icon.getImage());
     }
 

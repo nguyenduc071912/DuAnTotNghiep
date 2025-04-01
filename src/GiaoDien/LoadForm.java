@@ -22,7 +22,7 @@ public class LoadForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         init();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/iconbonbon.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/logoBonBon.png"));
         setIconImage(icon.getImage());
     }
     

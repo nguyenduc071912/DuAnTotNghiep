@@ -25,7 +25,7 @@ public class DangNhap extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/iconbonbon.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/logoBonBon.png"));
         setIconImage(icon.getImage());
     }
 
