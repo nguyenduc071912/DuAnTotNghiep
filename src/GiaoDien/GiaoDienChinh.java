@@ -6,14 +6,19 @@ package GiaoDien;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -41,13 +46,14 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         new LoadForm(this, true).setVisible(true);
         DangNhap dn = new DangNhap(this, true);
         dn.setVisible(true);
-        
+
         if (!dn.isDangNhapThanhCong()) {
             System.exit(0); // Thoát chương trình nếu người dùng không đăng nhập
         }
         this.startDongHo();
     }
-    void startDongHo(){
+
+    void startDongHo() {
         SimpleDateFormat formater = new SimpleDateFormat("hh:mm:ss a");
         new Timer(1000, (ActionEvent e) -> {
             DongHo.setText(formater.format(new Date()));
@@ -407,6 +413,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(gt.getContentPane());
         TabGDC.addTab("Giới thiệu", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Giới thiệu");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Giới thiệu", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_btnGioiThieuActionPerformed
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
@@ -421,6 +453,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qlsp.getContentPane());
         TabGDC.addTab("Sản phẩm", panel);
+
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Sản phẩm");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Sản phẩm", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
@@ -435,6 +493,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qlnv.getContentPane());
         TabGDC.addTab("Nhân viên", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Nhân viên");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Nhân viên", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
@@ -449,6 +533,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qlkh.getContentPane());
         TabGDC.addTab("Khách hàng", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Khách hàng");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Khách hàng", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonHangActionPerformed
@@ -463,6 +573,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qldh.getContentPane());
         TabGDC.addTab("Đơn hàng", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Đơn hàng");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Đơn hàng", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_btnDonHangActionPerformed
 
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
@@ -477,6 +613,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qlhd.getContentPane());
         TabGDC.addTab("Hóa đơn", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Hóa đơn");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Hóa đơn", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnTongHopThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTongHopThongKeActionPerformed
@@ -491,6 +653,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(tk.getContentPane());
         TabGDC.addTab("Tổng hợp - thống kê", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Tổng hợp - thống kê");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Sản phẩm", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_btnTongHopThongKeActionPerformed
 
     private void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
@@ -527,6 +715,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qlkh.getContentPane());
         TabGDC.addTab("Khách hàng", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Khách hàng");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Khách hàng", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_mniQLKHActionPerformed
 
     private void mniQLNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLNVActionPerformed
@@ -541,6 +755,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qlnv.getContentPane());
         TabGDC.addTab("Nhân viên", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Nhân viên");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Nhân viên", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_mniQLNVActionPerformed
 
     private void mniQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLSPActionPerformed
@@ -555,6 +795,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qlsp.getContentPane());
         TabGDC.addTab("Sản phẩm", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Sản phẩm");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Sản phẩm", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_mniQLSPActionPerformed
 
     private void mniQLDHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLDHActionPerformed
@@ -569,6 +835,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qldh.getContentPane());
         TabGDC.addTab("Đơn hàng", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Đơn hàng");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Đơn hàng", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_mniQLDHActionPerformed
 
     private void mniQLHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLHDActionPerformed
@@ -583,6 +875,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qlhd.getContentPane());
         TabGDC.addTab("Hóa đơn", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Hóa đơn");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Hóa đơn", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_mniQLHDActionPerformed
 
     private void mniThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongKeActionPerformed
@@ -597,6 +915,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(tk.getContentPane());
         TabGDC.addTab("Tổng hợp - thống kê", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Tổng hợp - thống kê");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Tổng hợp - thống kê", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_mniThongKeActionPerformed
 
     private void mniGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniGioiThieuActionPerformed
@@ -611,6 +955,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(gt.getContentPane());
         TabGDC.addTab("Giới thiệu", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Giới thiệu");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Giới thiệu", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_mniGioiThieuActionPerformed
 
     private void btnHDCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHDCTActionPerformed
@@ -625,6 +995,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qlhdct.getContentPane());
         TabGDC.addTab("Hóa đơn chi tiết", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Hóa đơn chi tiết");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Hóa đơn chi tiết", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_btnHDCTActionPerformed
 
     private void mniHDCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHDCTActionPerformed
@@ -639,6 +1035,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(qlhdct.getContentPane());
         TabGDC.addTab("Hóa đơn chi tiết", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Hóa đơn chi tiết");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Hóa đơn chi tiết", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_mniHDCTActionPerformed
 
     private void mniKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniKhoActionPerformed
@@ -653,6 +1075,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(k.getContentPane());
         TabGDC.addTab("Kho", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Kho");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Kho", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_mniKhoActionPerformed
 
     private void btnKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhoActionPerformed
@@ -667,6 +1115,32 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         JPanel panel = new JPanel();
         panel.add(k.getContentPane());
         TabGDC.addTab("Kho", panel);
+        
+        JPanel tabHeader = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 2));
+        JLabel titleLabel = new JLabel("Kho");
+        JButton closeButton = new JButton("x");
+
+        closeButton.setMargin(new Insets(0, 2, 0, 2));
+        closeButton.setFont(new Font("Arial", Font.BOLD, 12));
+        closeButton.setBorder(BorderFactory.createEmptyBorder());
+        closeButton.setFocusPainted(false);
+        closeButton.setContentAreaFilled(false);
+        closeButton.setOpaque(false);
+
+        closeButton.addActionListener(e -> {
+            int index = TabGDC.indexOfComponent(panel);
+            if (index != -1) {
+                TabGDC.remove(index);
+            }
+        });
+
+        tabHeader.add(titleLabel);
+        tabHeader.add(closeButton);
+
+        TabGDC.addTab("Kho", panel);
+        int index = TabGDC.indexOfComponent(panel);
+        TabGDC.setTabComponentAt(index, tabHeader);
+        TabGDC.setSelectedIndex(index);
     }//GEN-LAST:event_btnKhoActionPerformed
 
     /**
