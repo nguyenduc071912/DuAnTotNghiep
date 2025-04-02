@@ -158,11 +158,12 @@
     <Component class="javax.swing.JComboBox" name="cboLoaiSP">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="5">
             <StringItem index="0" value="N&#x1b0;&#x1edb;c &#xe9;p"/>
             <StringItem index="1" value="C&#xe0; ph&#xea;"/>
             <StringItem index="2" value="Tr&#xe0;"/>
             <StringItem index="3" value="Tr&#xe0; s&#x1eef;a"/>
+            <StringItem index="4" value="Sinh t&#x1ed1;"/>
           </StringArray>
         </Property>
       </Properties>

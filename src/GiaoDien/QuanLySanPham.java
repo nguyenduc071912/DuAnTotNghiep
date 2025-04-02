@@ -75,7 +75,7 @@ DefaultTableModel tableModel;
         jLabel1.setForeground(new java.awt.Color(153, 0, 51));
         jLabel1.setText("Quản lý sản phẩm");
 
-        cboLoaiSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nước ép", "Cà phê", "Trà", "Trà sữa" }));
+        cboLoaiSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nước ép", "Cà phê", "Trà", "Trà sữa", "Sinh tố" }));
 
         jLabel5.setText("Tên sản phẩm");
 
