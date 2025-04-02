@@ -35,8 +35,8 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="lblLogo" min="-2" pref="259" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="txtGioiThieu" min="-2" pref="272" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Component id="txtGioiThieu" min="-2" pref="196" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
