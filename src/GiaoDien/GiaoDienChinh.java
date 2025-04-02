@@ -699,7 +699,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         if (choice == JOptionPane.YES_OPTION) {
             DangNhap dn = new DangNhap(this, rootPaneCheckingEnabled);
             dn.setVisible(true);
-            this.dispose();
         }
     }//GEN-LAST:event_mniDangXuatActionPerformed
 
