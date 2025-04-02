@@ -82,6 +82,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         btnHoaDon = new javax.swing.JButton();
         btnHDCT = new javax.swing.JButton();
         btnTongHopThongKe = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
         btnGioiThieu = new javax.swing.JButton();
         btnDoiMatKhau = new javax.swing.JButton();
         TabGDC = new javax.swing.JTabbedPane();
@@ -214,6 +215,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btnTongHopThongKe);
+
+        jSeparator2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jToolBar1.add(jSeparator2);
 
         btnGioiThieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Info.png"))); // NOI18N
         btnGioiThieu.setText(" Giới thiệu ");
@@ -675,7 +679,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         tabHeader.add(titleLabel);
         tabHeader.add(closeButton);
 
-        TabGDC.addTab("Sản phẩm", panel);
+        TabGDC.addTab("Tổng hợp - thống kê", panel);
         int index = TabGDC.indexOfComponent(panel);
         TabGDC.setTabComponentAt(index, tabHeader);
         TabGDC.setSelectedIndex(index);
@@ -1198,6 +1202,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu jmenu;
