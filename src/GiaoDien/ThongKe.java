@@ -29,7 +29,7 @@ public class ThongKe extends javax.swing.JFrame {
         initComponents();
         initTable();
         LoadData();
-        startAutoRefresh();
+        
     }
     
     public List<DoanhThu> getAll(int nam) {
@@ -95,16 +95,7 @@ public class ThongKe extends javax.swing.JFrame {
         }
     }
     
-    public void startAutoRefresh() {
-        timer = new Timer(2000, new ActionListener() {
-        // 2000ms = 2 giây
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LoadData(); // Gọi phương thức cập nhật bảng
-            }
-        });
-        timer.start(); // Chạy Timer
-    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

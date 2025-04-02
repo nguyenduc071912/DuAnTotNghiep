@@ -385,7 +385,7 @@ public class QuanLyDonHang extends javax.swing.JFrame {
         }
         if (txtMaNV.getText().isEmpty()) {
             sb.append("Vui lòng nhập Mã nhân viên");
-        }else{
+        } else {
             try {
                 if (!DonHangServices.isThuNgan(txtMaNV.getText())) {
                     JOptionPane.showMessageDialog(this, "Nhân viên không phải thu ngân!", "Lỗi", JOptionPane.ERROR_MESSAGE);
@@ -494,9 +494,10 @@ public class QuanLyDonHang extends javax.swing.JFrame {
 
                 stmt.setString(1, maDH);
                 stmt.setString(2, maNV);
-                stmt.execute();
-                int choice = JOptionPane.showConfirmDialog(this, "Bạn có muốn thanh toán ?", "Thông báo", JOptionPane.OK_CANCEL_OPTION);
+
+                int choice = JOptionPane.showConfirmDialog(this, "Bạn có muốn thanh toán ?", "Thông báo", JOptionPane.YES_NO_OPTION);
                 if (choice == JOptionPane.YES_OPTION) {
+                    stmt.execute();
                     JOptionPane.showMessageDialog(this, "Thanh toán thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     loadData();
                 }

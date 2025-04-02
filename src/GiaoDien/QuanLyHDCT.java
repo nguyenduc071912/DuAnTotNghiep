@@ -46,7 +46,7 @@ public class QuanLyHDCT extends javax.swing.JFrame {
         }
     }
     public void startAutoRefresh() {
-        timer = new Timer(2000, new ActionListener() {
+        timer = new Timer(60000, new ActionListener() {
         // 2000ms = 2 giây
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -136,7 +136,7 @@ public class QuanLyHDCT extends javax.swing.JFrame {
         // TODO add your handling code here:
         String MaHDCT = txtTimkiem.getText().trim();
         if (MaHDCT.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập mã mã hóa đơn chi tiết!");
+            loadData();
             return;
         }
         List<HoaDonChiTiet> hdctList = (List<HoaDonChiTiet>) HoaDonChiTietServices.getById(MaHDCT);

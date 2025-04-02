@@ -45,7 +45,7 @@ public class QuanLyHoaDon extends javax.swing.JFrame {
     }
     
     public void startAutoRefresh() {
-        timer = new Timer(2000, new ActionListener() {
+        timer = new Timer(60000, new ActionListener() {
         // 2000ms = 2 giây
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -137,7 +137,7 @@ public class QuanLyHoaDon extends javax.swing.JFrame {
         // TODO add your handling code here:
         String MaHD = txtTim.getText().trim();
         if (MaHD.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập mã hóa đơn!");
+            loadData();
             return;
         }
         List<HoaDon> hdList = (List<HoaDon>) HoaDonServices.getById(MaHD);
