@@ -46,7 +46,7 @@ public class QuanLyHDCT extends javax.swing.JFrame {
         }
     }
     public void startAutoRefresh() {
-        timer = new Timer(60000, new ActionListener() {
+        timer = new Timer(30000, new ActionListener() {
         // 2000ms = 2 giây
             @Override
             public void actionPerformed(ActionEvent e) {
